@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="glow.css">
 <style>
 .assessment-wrap{max-width:780px;margin:0 auto;padding:3rem 3.5rem 7rem}
-.progress-bar{height:3px;background:rgba(58,42,37,0.1);border-radius:2px;margin-bottom:3rem;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:2px;transition:width 0.5s ease}
+.progress-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(58,42,37,0.1);overflow:hidden;z-index:1}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width 0.5s ease}
 .q-section{margin-bottom:3rem;padding-bottom:3rem;border-bottom:0.5px solid rgba(58,42,37,0.1)}
 .q-section:last-of-type{border-bottom:none}
 .q-section-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:0.4rem}
@@ -70,6 +70,7 @@
       </div>
     </li>
   </ul>
+  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
 </nav>
 
 <section class="page-hero">
@@ -98,8 +99,6 @@
 </div>
 
 <div class="assessment-wrap">
-  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
-
   <div id="assessment-form">
     <div class="form-wrap">
 
