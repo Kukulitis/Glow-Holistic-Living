@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Glow Journal — Soul & Craft</title>
+<link rel="stylesheet" href="glow.css">
+<style>
+/* FEATURED POST */
+.featured{padding:4rem 3.5rem 0}
+.featured-card{border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;background:var(--light);transition:box-shadow 0.3s}
+.featured-card:hover{box-shadow:0 20px 60px rgba(58,42,37,0.12)}
+.featured-img{min-height:480px;background:linear-gradient(135deg,rgba(58,42,37,.3),rgba(196,130,107,.25)),url('https://picsum.photos/seed/blogfeat/900/700')center/cover no-repeat;position:relative}
+.featured-img .feat-label{position:absolute;top:1.5rem;left:1.5rem;background:var(--rose);color:white;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:2rem}
+.featured-body{padding:3.5rem}
+.feat-cat{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:0.75rem;display:block}
+.featured-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:300;line-height:1.2;margin-bottom:1rem}
+.featured-body h2 em{font-style:italic;color:var(--rose)}
+.featured-body p{font-size:0.9rem;line-height:1.85;opacity:0.65;margin-bottom:2rem}
+.feat-meta{display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem}
+.feat-avatar{width:38px;height:38px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.feat-avatar img{width:100%;height:100%;object-fit:cover}
+.feat-byline{font-size:0.78rem;opacity:0.55}
+.feat-byline strong{display:block;font-size:0.8rem;font-weight:500;opacity:1;color:var(--deep)}
+
+/* FILTERS */
+.filters{padding:3.5rem 3.5rem 2rem;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap}
+.filter-btn{padding:0.5rem 1.2rem;border-radius:2rem;border:1px solid rgba(58,42,37,0.15);background:transparent;font-family:'Jost',sans-serif;font-size:0.74rem;letter-spacing:0.08em;cursor:pointer;color:var(--deep);opacity:0.65;transition:all 0.2s}
+.filter-btn:hover,.filter-btn.active{background:var(--rose);border-color:var(--rose);color:white;opacity:1}
+
+/* POSTS GRID */
+.posts{padding:0 3.5rem 7rem}
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.post-card{border-radius:20px;overflow:hidden;background:var(--cream);border:0.5px solid rgba(58,42,37,0.07);transition:transform 0.25s,box-shadow 0.25s;cursor:pointer}
+.post-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(58,42,37,0.11)}
+.post-img{height:220px;position:relative;overflow:hidden}
+.post-img-inner{width:100%;height:100%;transition:transform 0.5s ease;background-size:cover;background-position:center}
+.post-card:hover .post-img-inner{transform:scale(1.05)}
+.pi-1{background:linear-gradient(150deg,rgba(232,196,184,.4),rgba(196,130,107,.4)),url('https://picsum.photos/seed/blog1gut/600/400')center/cover}
+.pi-2{background:linear-gradient(150deg,rgba(138,158,140,.4),rgba(74,122,92,.4)),url('https://picsum.photos/seed/blog2sleep/600/400')center/cover}
+.pi-3{background:linear-gradient(150deg,rgba(201,184,154,.4),rgba(138,112,80,.4)),url('https://picsum.photos/seed/blog3collagen/600/400')center/cover}
+.pi-4{background:linear-gradient(150deg,rgba(184,208,200,.4),rgba(74,112,96,.4)),url('https://picsum.photos/seed/blog4mind/600/400')center/cover}
+.pi-5{background:linear-gradient(150deg,rgba(208,200,224,.4),rgba(106,80,128,.4)),url('https://picsum.photos/seed/blog5stress/600/400')center/cover}
+.pi-6{background:linear-gradient(150deg,rgba(212,196,160,.4),rgba(154,128,80,.4)),url('https://picsum.photos/seed/blog6hydrat/600/400')center/cover}
+.post-cat-badge{position:absolute;bottom:1rem;left:1rem;background:rgba(250,247,242,0.92);backdrop-filter:blur(4px);font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.75rem;border-radius:2rem;color:var(--deep)}
+.post-body{padding:1.5rem}
+.post-body h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;line-height:1.3;margin-bottom:0.6rem}
+.post-body p{font-size:0.8rem;line-height:1.75;opacity:0.6;margin-bottom:1.25rem}
+.post-footer{display:flex;align-items:center;justify-content:space-between}
+.post-date{font-size:0.7rem;opacity:0.4;letter-spacing:0.05em}
+.read-more{font-size:0.74rem;font-weight:500;color:var(--rose);letter-spacing:0.06em;text-decoration:none;transition:opacity 0.2s}
+.read-more:hover{opacity:0.7}
+
+/* LOAD MORE */
+.load-more-wrap{text-align:center;padding:1rem 0 4rem}
+
+/* NEWSLETTER BANNER */
+.journal-nl{background:var(--deep);padding:6rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.nl-text .tag{color:var(--blush)}
+.nl-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:1rem}
+.nl-text p{font-size:0.9rem;line-height:1.85;opacity:0.5;color:var(--cream)}
+.nl-form{display:flex;flex-direction:column;gap:1rem}
+.nl-input{background:rgba(255,255,255,0.07);border:0.5px solid rgba(232,196,184,0.25);color:var(--cream);font-family:'Jost',sans-serif;font-size:0.88rem;padding:0.95rem 1.25rem;border-radius:2rem;outline:none;transition:border-color 0.25s}
+.nl-input::placeholder{opacity:0.35;color:var(--cream)}
+.nl-input:focus{border-color:rgba(232,196,184,0.6)}
+.nl-btn{background:var(--rose);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:1rem;border-radius:2rem;cursor:pointer;transition:background 0.25s,transform 0.2s;position:relative;overflow:hidden}
+.nl-btn:hover{background:var(--blush);color:var(--deep);transform:translateY(-2px)}
+.nl-note{font-size:0.72rem;opacity:0.35;color:var(--cream);text-align:center}
+
+@media(max-width:900px){
+  .featured-card{grid-template-columns:1fr}
+  .featured-img{min-height:300px}
+  .posts-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .featured{padding:3rem 1.5rem 0}
+  .featured-body{padding:2rem}
+  .filters{padding:2rem 1.5rem 1rem}
+  .posts{padding:0 1.5rem 5rem}
+  .journal-nl{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem}
+}
+@media(max-width:480px){
+  .posts-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="hydration.html">Inner Care</a></li>
+    <li><a href="collagen.html">Collagen</a></li>
+    <li><a href="blog.html" class="nav-active">Soul &amp; Craft</a></li>
+    <li class="nav-more">
+      <a href="#" class="nav-more-trigger">More &#9662;</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About Me</a>
+        <a href="community.html">Join the Community</a>
+        <a href="assessment.html">Health Assessment</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <span class="eyebrow reveal">Soul &amp; Craft</span>
+  <h1 class="reveal delay-1">The Glow <em>Journal</em></h1>
+  <p class="sub reveal delay-2">Evidence-based guides, honest conversations, and the kind of wellness wisdom that actually sticks. Written with care, for women who want to truly understand their bodies.</p>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="mdot"></span>Cleansing rituals</span>
+    <span class="marquee-item"><span class="mdot"></span>Hydration</span>
+    <span class="marquee-item"><span class="mdot"></span>Mindset</span>
+    <span class="marquee-item"><span class="mdot"></span>Collagen</span>
+    <span class="marquee-item"><span class="mdot"></span>Nutrition</span>
+    <span class="marquee-item"><span class="mdot"></span>Sleep science</span>
+    <span class="marquee-item"><span class="mdot"></span>Cleansing rituals</span>
+    <span class="marquee-item"><span class="mdot"></span>Hydration</span>
+    <span class="marquee-item"><span class="mdot"></span>Mindset</span>
+    <span class="marquee-item"><span class="mdot"></span>Collagen</span>
+    <span class="marquee-item"><span class="mdot"></span>Nutrition</span>
+    <span class="marquee-item"><span class="mdot"></span>Sleep science</span>
+  </div>
+</div>
+
+<!-- FEATURED POST -->
+<div class="featured">
+  <div class="featured-card reveal-scale">
+    <div class="featured-img img-shimmer">
+      <div class="feat-label">Featured</div>
+    </div>
+    <div class="featured-body">
+      <span class="feat-cat">Gut health</span>
+      <h2>Why your gut is your body's <em>second brain</em> — and how to heal it</h2>
+      <p>The gut-brain axis is one of the most exciting areas of modern health research. What happens in your gut directly shapes your mood, energy, skin, immunity, and even how you handle stress. Here's everything you need to know.</p>
+      <div class="feat-meta">
+        <div class="feat-avatar"><img src="https://picsum.photos/seed/andaavatar/100/100" alt="Anda"></div>
+        <div class="feat-byline"><strong>Anda</strong>15 April 2026 · 8 min read</div>
+      </div>
+      <a href="#" class="btn-primary">Read the full article</a>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY FILTERS -->
+<div class="filters">
+  <button class="filter-btn active" onclick="filterPosts('all',this)">All</button>
+  <button class="filter-btn" onclick="filterPosts('cleansing',this)">Cleansing</button>
+  <button class="filter-btn" onclick="filterPosts('hydration',this)">Hydration</button>
+  <button class="filter-btn" onclick="filterPosts('mindset',this)">Mindset</button>
+  <button class="filter-btn" onclick="filterPosts('collagen',this)">Collagen</button>
+  <button class="filter-btn" onclick="filterPosts('nutrition',this)">Nutrition</button>
+  <button class="filter-btn" onclick="filterPosts('sleep',this)">Sleep</button>
+</div>
+
+<!-- POSTS GRID -->
+<section class="posts">
+  <div class="posts-grid">
+    <div class="post-card reveal delay-1" data-cat="cleansing">
+      <div class="post-img"><div class="post-img-inner pi-1"></div><div class="post-cat-badge">Cleansing</div></div>
+      <div class="post-body">
+        <h3>The morning ritual that transformed my skin in 30 days</h3>
+        <p>A simple, science-backed cleansing sequence that removes toxins, supports lymphatic drainage, and sets your skin's pH for the day.</p>
+        <div class="post-footer"><span class="post-date">8 Apr 2026</span><a href="#" class="read-more">Read →</a></div>
+      </div>
+    </div>
+    <div class="post-card reveal delay-2" data-cat="sleep">
+      <div class="post-img"><div class="post-img-inner pi-2"></div><div class="post-cat-badge">Sleep</div></div>
+      <div class="post-body">
+        <h3>How deep sleep rebuilds your body — the nightly repair you're missing</h3>
+        <p>Sleep is your body's most powerful healing tool. Here's what's actually happening at a cellular level while you rest, and how to optimise it.</p>
+        <div class="post-footer"><span class="post-date">1 Apr 2026</span><a href="#" class="read-more">Read →</a></div>
+      </div>
+    </div>
+    <div class="post-card reveal delay-3" data-cat="collagen">
+      <div class="post-img"><div class="post-img-inner pi-3"></div><div class="post-cat-badge">Collagen</div></div>
+      <div class="post-body">
+        <h3>Collagen supplements: what the science actually says</h3>
+        <p>The supplement industry is noisy. Here's a clear, evidence-based look at which forms of collagen are absorbed, which aren't, and what truly moves the needle.</p>
+        <div class="post-footer"><span class="post-date">22 Mar 2026</span><a href="#" class="read-more">Read →</a></div>
+      </div>
+    </div>
+    <div class="post-card reveal delay-1" data-cat="mindset">
+      <div class="post-img"><div class="post-img-inner pi-4"></div><div class="post-cat-badge">Mindset</div></div>
+      <div class="post-body">
+        <h3>The nervous system is the missing piece in your wellness plan</h3>
+        <p>You can eat perfectly and still feel unwell if your nervous system is stuck in survival mode. Here's how chronic stress blocks healing — and what shifts it.</p>
+        <div class="post-footer"><span class="post-date">14 Mar 2026</span><a href="#" class="read-more">Read →</a></div>
+      </div>
+    </div>
+    <div class="post-card reveal delay-2" data-cat="hydration">
+      <div class="post-img"><div class="post-img-inner pi-5"></div><div class="post-cat-badge">Hydration</div></div>
+      <div class="post-body">
+        <h3>Why you can drink 2 litres and still be dehydrated</h3>
+        <p>Hydration is not just about volume. The mineral content, timing, and quality of what you drink determine whether water actually reaches your cells.</p>
+        <div class="post-footer"><span class="post-date">5 Mar 2026</span><a href="#" class="read-more">Read →</a></div>
+      </div>
+    </div>
+    <div class="post-card reveal delay-3" data-cat="nutrition">
+      <div class="post-img"><div class="post-img-inner pi-6"></div><div class="post-cat-badge">Nutrition</div></div>
+      <div class="post-body">
+        <h3>Anti-inflammatory eating: a practical guide for real life</h3>
+        <p>Inflammation is at the root of almost every chronic health concern. But eating anti-inflammatory doesn't have to mean expensive or complicated. Here's where to start.</p>
+        <div class="post-footer"><span class="post-date">22 Feb 2026</span><a href="#" class="read-more">Read →</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="load-more-wrap" style="margin-top:3rem">
+    <button class="btn-outline" onclick="this.style.opacity='0.5';this.textContent='Loading…'">Load more articles</button>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="journal-nl">
+  <div class="nl-text reveal-left">
+    <span class="tag">Never miss a post</span>
+    <h2>The Glow Journal — straight to your inbox</h2>
+    <p>Join 12,000+ readers who get our best guides, research breakdowns, and honest wellness conversations every week. No spam, ever.</p>
+  </div>
+  <div class="reveal-right">
+    <div class="nl-form">
+      <input class="nl-input" type="text" placeholder="Your first name" />
+      <input class="nl-input" type="email" placeholder="Your email address" />
+      <button class="nl-btn">Subscribe to the journal</button>
+      <p class="nl-note">Unsubscribe at any time. We respect your privacy.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
+    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+  </div>
+  <div class="f-col">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="hydration.html">Inner Care</a></li>
+      <li><a href="collagen.html">Collagen</a></li>
+      <li><a href="blog.html">Soul &amp; Craft</a></li>
+      <li><a href="assessment.html">Health Assessment</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html">About Anda</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="#">Newsletter</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Pinterest</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="f-bottom">
+  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>Privacy policy · Terms of use</span>
+</div>
+
+<script src="glow.js"></script>
+<script>
+function filterPosts(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.post-card').forEach(card => {
+    const show = cat === 'all' || card.dataset.cat === cat;
+    card.style.display = show ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

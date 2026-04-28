@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get in touch — Glow</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FAF7F2;--blush:#E8C4B8;--rose:#C4826B;--deep:#3A2A25;
+  --sage:#8A9E8C;--gold:#C9A96E;--light:#F3EDE6;--sage-light:#EBF0EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);overflow-x:hidden}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(48px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-48px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(48px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:0.1s}.delay-2{transition-delay:0.2s}.delay-3{transition-delay:0.3s}.delay-4{transition-delay:0.4s}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem 3.5rem;background:rgba(250,247,242,0.92);
+  position:sticky;top:0;z-index:200;
+  border-bottom:0.5px solid rgba(58,42,37,0.1);
+  backdrop-filter:blur(8px);
+  transition:padding 0.35s ease,box-shadow 0.35s ease;
+}
+nav.scrolled{padding-top:0.8rem;padding-bottom:0.8rem;box-shadow:0 4px 24px rgba(58,42,37,0.09)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;letter-spacing:0.08em;text-decoration:none;color:var(--deep)}
+.logo em{font-style:italic;color:var(--rose)}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav ul a{text-decoration:none;font-size:0.76rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--deep);opacity:0.65;transition:opacity 0.2s;position:relative}
+nav ul a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--rose);transform:scaleX(0);transform-origin:right;transition:transform 0.3s ease}
+nav ul a:hover{opacity:1}
+nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-btn{background:var(--deep);color:var(--cream)!important;opacity:1!important;padding:0.55rem 1.3rem;border-radius:2rem;font-size:0.74rem!important}
+.nav-btn::after{display:none!important}
+
+/* PAGE HERO */
+.page-hero{
+  padding:1.5rem 3.5rem 2rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.page-hero .tag{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rose);margin-bottom:1.2rem;font-weight:500;display:block;
+  background:linear-gradient(90deg,var(--rose),var(--gold),var(--rose));background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:gradient-text 4s linear infinite;
+}
+@keyframes gradient-text{0%{background-position:0% center}100%{background-position:200% center}}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:1.25rem}
+.page-hero h1 em{font-style:italic;color:var(--rose)}
+.page-hero p{font-size:0.95rem;line-height:1.85;opacity:0.6;max-width:480px;margin:0 auto}
+
+/* Decorative blobs */
+.blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;z-index:0}
+.blob-1{width:350px;height:350px;background:rgba(196,130,107,0.14);top:-100px;right:10%;animation:float1 8s ease-in-out infinite}
+.blob-2{width:250px;height:250px;background:rgba(138,158,140,0.12);bottom:-60px;left:8%;animation:float2 10s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.04)}}
+@keyframes float2{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(20px) scale(0.97)}}
+.page-hero > *{position:relative;z-index:1}
+
+/* CONTACT LAYOUT */
+.contact-section{
+  padding:4rem 3.5rem 8rem;
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  gap:6rem;
+  align-items:start;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* INFO SIDE */
+.contact-info .info-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:1.5rem}
+.contact-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.5vw,2.5rem);font-weight:300;line-height:1.2;margin-bottom:1rem}
+.contact-info p{font-size:0.9rem;line-height:1.9;opacity:0.6;margin-bottom:3rem}
+
+.info-card{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 0;border-top:0.5px solid rgba(58,42,37,0.1)}
+.info-card:last-of-type{border-bottom:0.5px solid rgba(58,42,37,0.1)}
+.info-icon{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--light);display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+  transition:background 0.25s,transform 0.25s;
+}
+.info-card:hover .info-icon{background:var(--blush);transform:scale(1.08)}
+.info-card-text strong{display:block;font-size:0.82rem;font-weight:500;margin-bottom:0.25rem}
+.info-card-text span{font-size:0.82rem;opacity:0.55}
+
+.social-row{display:flex;gap:0.75rem;margin-top:2.5rem}
+.social-btn{
+  width:40px;height:40px;border-radius:50%;
+  border:0.5px solid rgba(58,42,37,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;cursor:pointer;
+  transition:background 0.25s,border-color 0.25s,transform 0.25s;
+  text-decoration:none;
+}
+.social-btn:hover{background:var(--rose);border-color:var(--rose);transform:translateY(-3px)}
+
+/* FORM SIDE */
+.contact-form-wrap{
+  background:white;
+  border-radius:24px;
+  padding:3rem;
+  box-shadow:0 8px 40px rgba(58,42,37,0.07);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem}
+.form-group{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.25rem}
+.form-group label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;font-weight:500}
+.form-control{
+  background:#FAF7F2;border:1px solid rgba(58,42,37,0.12);
+  color:var(--deep);font-family:'Jost',sans-serif;font-size:0.88rem;
+  padding:0.85rem 1.1rem;border-radius:12px;outline:none;
+  transition:border-color 0.25s,box-shadow 0.25s;
+  width:100%;
+}
+.form-control:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(196,130,107,0.1)}
+.form-control::placeholder{opacity:0.35}
+textarea.form-control{resize:vertical;min-height:140px}
+
+.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1.5rem}
+.topic-btn{
+  padding:0.6rem 0.9rem;border-radius:2rem;
+  border:1px solid rgba(58,42,37,0.15);
+  background:transparent;font-family:'Jost',sans-serif;
+  font-size:0.76rem;letter-spacing:0.05em;cursor:pointer;
+  color:var(--deep);opacity:0.65;
+  transition:all 0.2s;text-align:center;
+}
+.topic-btn:hover,.topic-btn.active{background:var(--rose);border-color:var(--rose);color:white;opacity:1}
+
+.submit-btn{
+  width:100%;background:var(--deep);color:var(--cream);
+  border:none;font-family:'Jost',sans-serif;
+  font-size:0.82rem;font-weight:500;letter-spacing:0.12em;
+  text-transform:uppercase;padding:1.05rem;border-radius:2rem;
+  cursor:pointer;
+  transition:background 0.25s,transform 0.2s;
+  position:relative;overflow:hidden;
+}
+.submit-btn:hover{background:var(--rose);transform:translateY(-2px)}
+.form-note{font-size:0.72rem;opacity:0.4;text-align:center;margin-top:0.9rem}
+
+/* RIPPLE */
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.28);transform:scale(0);animation:ripple-anim 0.55s linear;pointer-events:none}
+@keyframes ripple-anim{to{transform:scale(4);opacity:0}}
+
+/* SUCCESS STATE */
+.success-msg{
+  display:none;text-align:center;padding:2rem 0;
+}
+.success-icon{font-size:3rem;margin-bottom:1rem;display:block;animation:pop 0.4s cubic-bezier(0.175,0.885,0.32,1.275)}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.success-msg h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;margin-bottom:0.5rem}
+.success-msg p{font-size:0.88rem;opacity:0.55;line-height:1.8}
+
+/* MARQUEE (divider) */
+.marquee-strip{background:var(--deep);padding:0.95rem 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:3rem;animation:marquee 20s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{font-size:0.7rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--blush);display:flex;align-items:center;gap:1rem}
+.mdot{width:4px;height:4px;border-radius:50%;background:var(--rose);flex-shrink:0}
+
+/* FOOTER */
+footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--cream);margin-bottom:1rem;display:block;text-decoration:none}
+.f-logo em{font-style:italic;color:var(--blush)}
+.f-desc{font-size:0.82rem;line-height:1.8;opacity:0.4}
+.f-col h4{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.25rem;color:var(--blush)}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.f-col ul a{text-decoration:none;font-size:0.84rem;color:var(--cream);opacity:0.4;transition:opacity 0.2s}
+.f-col ul a:hover{opacity:0.9}
+.f-bottom{background:#221814;padding:1.25rem 3.5rem;display:flex;justify-content:space-between;font-size:0.74rem;opacity:0.35;color:var(--cream)}
+
+/* CURSOR GLOW */
+.cursor-glow{position:fixed;width:480px;height:480px;background:radial-gradient(circle,rgba(196,130,107,0.07) 0%,transparent 70%);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:9999}
+
+/* ACTIVE NAV STATE */
+.nav-active{opacity:1!important}
+.nav-active::after{transform:scaleX(1)!important;transform-origin:left!important}
+
+/* NAV DROPDOWN */
+.nav-more{position:relative}
+.nav-more-trigger{cursor:pointer;user-select:none}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 14px);right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(10px);border:0.5px solid rgba(58,42,37,0.1);border-radius:14px;padding:0.5rem 0;min-width:195px;box-shadow:0 12px 40px rgba(58,42,37,0.13);flex-direction:column}
+.nav-more.open .nav-dropdown{display:flex}
+.nav-dropdown a{padding:0.7rem 1.3rem;font-size:0.73rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--deep);opacity:0.65;transition:opacity 0.2s,background 0.2s;text-decoration:none}
+.nav-dropdown a::after{display:none!important}
+.nav-dropdown a:hover{opacity:1;background:rgba(196,130,107,0.07)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--deep);transition:transform 0.3s,opacity 0.3s}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  nav ul{display:none;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(58,42,37,0.1);padding:0.5rem 0;align-items:stretch}
+  nav ul.mobile-open{display:flex}
+  nav ul li{border-top:0.5px solid rgba(58,42,37,0.06)}
+  nav ul a{padding:0.85rem 1.5rem;display:block;opacity:0.75}
+  .nav-toggle{display:flex}
+  .nav-more .nav-dropdown{position:static;border:none;box-shadow:none;background:rgba(58,42,37,0.04);border-radius:0;padding:0;display:none}
+  .nav-more.open .nav-dropdown{display:flex}
+  .nav-dropdown a{padding:0.75rem 2.5rem}
+  .contact-section{grid-template-columns:1fr;gap:3rem;padding:3rem 1.5rem 5rem}
+  footer{grid-template-columns:1fr 1fr;gap:2rem;padding:3rem 1.5rem}
+  .f-bottom{padding:1rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center}
+}
+@media(max-width:480px){footer{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="hydration.html">Inner Care</a></li>
+    <li><a href="collagen.html">Collagen</a></li>
+    <li><a href="blog.html">Soul &amp; Craft</a></li>
+    <li class="nav-more">
+      <a href="#" class="nav-more-trigger">More &#9662;</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About Me</a>
+        <a href="community.html">Join the Community</a>
+        <a href="assessment.html">Health Assessment</a>
+        <a href="contact.html" class="nav-active">Contact</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <span class="tag reveal">Say hello</span>
+  <h1 class="reveal delay-1">We'd love to hear <em>from you</em></h1>
+  <p class="reveal delay-2">Whether you have a question, a collaboration idea, or just want to talk beauty — our inbox is always open.</p>
+</section>
+
+<!-- MARQUEE DIVIDER -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="mdot"></span>Skin science</span>
+    <span class="marquee-item"><span class="mdot"></span>Botanical ingredients</span>
+    <span class="marquee-item"><span class="mdot"></span>Holistic wellness</span>
+    <span class="marquee-item"><span class="mdot"></span>Clean beauty guides</span>
+    <span class="marquee-item"><span class="mdot"></span>Mindful living</span>
+    <span class="marquee-item"><span class="mdot"></span>Expert tips</span>
+    <span class="marquee-item"><span class="mdot"></span>Skin science</span>
+    <span class="marquee-item"><span class="mdot"></span>Botanical ingredients</span>
+    <span class="marquee-item"><span class="mdot"></span>Holistic wellness</span>
+    <span class="marquee-item"><span class="mdot"></span>Clean beauty guides</span>
+    <span class="marquee-item"><span class="mdot"></span>Mindful living</span>
+    <span class="marquee-item"><span class="mdot"></span>Expert tips</span>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+
+  <!-- LEFT: Info -->
+  <div class="contact-info">
+    <p class="info-label reveal">Contact</p>
+    <h2 class="reveal delay-1">Let's start a conversation</h2>
+    <p class="reveal delay-2">We typically respond within 24 hours on weekdays. For press or partnerships, please mention it in your message so we can route it to the right person.</p>
+
+    <div class="info-card reveal delay-1">
+      <div class="info-icon">✉️</div>
+      <div class="info-card-text">
+        <strong>Email us</strong>
+        <span>hello@glowbeauty.com</span>
+      </div>
+    </div>
+    <div class="info-card reveal delay-2">
+      <div class="info-icon">📍</div>
+      <div class="info-card-text">
+        <strong>Location</strong>
+        <span>Remote — available worldwide</span>
+      </div>
+    </div>
+    <div class="info-card reveal delay-3">
+      <div class="info-icon">🕐</div>
+      <div class="info-card-text">
+        <strong>Response time</strong>
+        <span>Within 24 hours, Mon–Fri</span>
+      </div>
+    </div>
+
+    <div class="social-row reveal delay-4">
+      <a href="#" class="social-btn" title="Instagram">📷</a>
+      <a href="#" class="social-btn" title="Pinterest">📌</a>
+      <a href="#" class="social-btn" title="Newsletter">📬</a>
+    </div>
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div class="contact-form-wrap reveal-right">
+    <div id="contact-form">
+      <p style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.45;margin-bottom:1.5rem;font-weight:500">What are you reaching out about?</p>
+      <div class="topic-grid" id="topic-grid">
+        <button class="topic-btn" onclick="selectTopic(this)">General question</button>
+        <button class="topic-btn" onclick="selectTopic(this)">Collaboration</button>
+        <button class="topic-btn" onclick="selectTopic(this)">Press & media</button>
+        <button class="topic-btn" onclick="selectTopic(this)">Feedback</button>
+        <button class="topic-btn" onclick="selectTopic(this)">Skincare advice</button>
+        <button class="topic-btn" onclick="selectTopic(this)">Other</button>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input class="form-control" type="text" placeholder="Jane" id="fname" />
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input class="form-control" type="text" placeholder="Doe" id="lname" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email address</label>
+        <input class="form-control" type="email" placeholder="jane@example.com" id="email" />
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea class="form-control" placeholder="Tell us what's on your mind…" id="message"></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="submitForm(event)">Send message</button>
+      <p class="form-note">We respect your privacy and will never share your details.</p>
+    </div>
+
+    <div class="success-msg" id="success-msg">
+      <span class="success-icon">🌿</span>
+      <h3>Message sent!</h3>
+      <p>Thank you for reaching out. We'll be in touch within 24 hours.<br>In the meantime, explore our latest guides.</p>
+      <br>
+      <a href="health_beauty_informational.html" style="display:inline-block;margin-top:0.5rem;background:var(--deep);color:var(--cream);padding:0.85rem 2rem;border-radius:2rem;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.25s" onmouseover="this.style.background='var(--rose)'" onmouseout="this.style.background='var(--deep)'">Back to Glow →</a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <div>
+    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
+    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+  </div>
+  <div class="f-col">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="hydration.html">Inner Care</a></li>
+      <li><a href="collagen.html">Collagen</a></li>
+      <li><a href="blog.html">Soul &amp; Craft</a></li>
+      <li><a href="assessment.html">Health Assessment</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html">About Anda</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="#">Newsletter</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Pinterest</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="f-bottom">
+  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>Privacy policy · Terms of use</span>
+</div>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+// Nav compact on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+// Mobile nav
+const navToggle = document.querySelector('.nav-toggle');
+const navUl = document.querySelector('nav ul');
+if (navToggle && navUl) {
+  navToggle.addEventListener('click', () => {
+    navUl.classList.toggle('mobile-open');
+    const spans = navToggle.querySelectorAll('span');
+    const open = navUl.classList.contains('mobile-open');
+    spans[0].style.transform = open ? 'translateY(6.5px) rotate(45deg)' : '';
+    spans[1].style.opacity = open ? '0' : '';
+    spans[2].style.transform = open ? 'translateY(-6.5px) rotate(-45deg)' : '';
+  });
+  document.addEventListener('click', e => { if (!nav.contains(e.target)) navUl.classList.remove('mobile-open'); });
+}
+const navMore = document.querySelector('.nav-more');
+if (navMore) {
+  navMore.querySelector('.nav-more-trigger').addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); navMore.classList.toggle('open'); });
+  document.addEventListener('click', e => { if (!navMore.contains(e.target)) navMore.classList.remove('open'); });
+}
+
+// Cursor glow
+const glow = document.createElement('div');
+glow.className = 'cursor-glow';
+document.body.appendChild(glow);
+let glowX = window.innerWidth/2, glowY = window.innerHeight/2, currX = glowX, currY = glowY;
+document.addEventListener('mousemove', e => { glowX = e.clientX; glowY = e.clientY; });
+(function animateGlow(){
+  currX += (glowX - currX) * 0.07;
+  currY += (glowY - currY) * 0.07;
+  glow.style.left = currX + 'px';
+  glow.style.top = currY + 'px';
+  requestAnimationFrame(animateGlow);
+})();
+
+// Topic selection
+function selectTopic(btn) {
+  document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// Button ripple
+document.querySelectorAll('.submit-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const r = btn.getBoundingClientRect();
+    const size = Math.max(r.width, r.height);
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-r.left-size/2}px;top:${e.clientY-r.top-size/2}px`;
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+// Form submit
+function submitForm(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!email || !message) {
+    const missing = !email ? document.getElementById('email') : document.getElementById('message');
+    missing.style.borderColor = 'var(--rose)';
+    missing.focus();
+    setTimeout(() => missing.style.borderColor = '', 2000);
+    return;
+  }
+  document.getElementById('contact-form').style.opacity = '0';
+  document.getElementById('contact-form').style.transition = 'opacity 0.4s';
+  setTimeout(() => {
+    document.getElementById('contact-form').style.display = 'none';
+    const s = document.getElementById('success-msg');
+    s.style.display = 'block';
+    s.style.opacity = '0';
+    s.style.transition = 'opacity 0.4s';
+    setTimeout(() => s.style.opacity = '1', 50);
+  }, 400);
+}
+</script>
+</body>
+</html>

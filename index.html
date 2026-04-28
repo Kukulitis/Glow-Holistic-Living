@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Holistic Living — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FAF7F2;--blush:#E8C4B8;--rose:#C4826B;--deep:#3A2A25;
+  --sage:#8A9E8C;--gold:#C9A96E;--light:#F3EDE6;--sage-light:#EBF0EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);overflow-x:hidden}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(48px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-48px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(48px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.delay-1{transition-delay:0.1s}.delay-2{transition-delay:0.2s}.delay-3{transition-delay:0.3s}.delay-4{transition-delay:0.4s}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem 3.5rem;background:rgba(250,247,242,0.92);
+  position:sticky;top:0;z-index:200;
+  border-bottom:0.5px solid rgba(58,42,37,0.1);
+  backdrop-filter:blur(8px);
+}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;letter-spacing:0.08em;text-decoration:none;color:var(--deep)}
+.logo em{font-style:italic;color:var(--rose)}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav ul a{text-decoration:none;font-size:0.76rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--deep);opacity:0.65;transition:opacity 0.2s}
+nav ul a:hover{opacity:1}
+.nav-btn{background:var(--deep);color:var(--cream)!important;opacity:1!important;padding:0.55rem 1.3rem;border-radius:2rem;font-size:0.74rem!important}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:7rem 3.5rem;z-index:2}
+.hero-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rose);margin-bottom:1.5rem;font-weight:500}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,5vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--rose)}
+.hero-desc{font-size:0.95rem;line-height:1.85;opacity:0.6;max-width:380px;margin-bottom:2.5rem}
+.btn-primary{background:var(--deep);color:var(--cream);padding:0.9rem 2.2rem;border-radius:2rem;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border:none;font-family:'Jost',sans-serif;transition:background 0.25s,transform 0.2s}
+.btn-primary:hover{background:var(--rose);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--deep);padding:0.9rem 2.2rem;border-radius:2rem;font-size:0.78rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(58,42,37,0.25);font-family:'Jost',sans-serif;transition:border-color 0.25s,transform 0.2s}
+.btn-outline:hover{border-color:var(--rose);color:var(--rose);transform:translateY(-2px)}
+.btn-group{display:flex;gap:1rem}
+
+.hero-right{position:relative;overflow:hidden}
+.hero-collage{width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:0}
+.hero-img{background-size:cover;background-position:center;transition:transform 8s ease}
+.hero-img:hover{transform:scale(1.04)}
+.hi1{background:linear-gradient(135deg,#D4A090 0%,#8A6055 100%)}
+.hi2{background:linear-gradient(135deg,#8A9E8C 0%,#5A7A5C 100%);margin-top:3rem}
+.hi3{background:linear-gradient(135deg,#C9B89A 0%,#8A7055 100%);margin-top:-3rem}
+.hi4{background:linear-gradient(135deg,#B8A0C4 0%,#7A6090 100%)}
+
+.hero-float{
+  position:absolute;bottom:2.5rem;right:2.5rem;
+  background:rgba(250,247,242,0.92);backdrop-filter:blur(8px);
+  padding:1.1rem 1.4rem;border-radius:14px;z-index:10;
+  font-size:0.8rem;color:var(--deep);
+}
+.hero-float strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--rose);line-height:1}
+
+/* MARQUEE */
+.marquee-strip{background:var(--deep);padding:0.95rem 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:3rem;animation:marquee 20s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{font-size:0.7rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--blush);display:flex;align-items:center;gap:1rem}
+.mdot{width:4px;height:4px;border-radius:50%;background:var(--rose);flex-shrink:0}
+
+/* INTRO */
+.intro{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.intro-text .tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:1rem;font-weight:500}
+.intro-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem}
+.intro-text p{font-size:0.93rem;line-height:1.9;opacity:0.65;margin-bottom:1rem}
+.intro-mosaic{display:grid;grid-template-columns:3fr 2fr;grid-template-rows:auto auto;gap:1rem}
+.mosaic-img{border-radius:14px;overflow:hidden;position:relative}
+.mosaic-img.tall{grid-row:1/3}
+.mi1{background:linear-gradient(160deg,#C9A090,#8A5545);min-height:340px}
+.mi2{background:linear-gradient(160deg,#8A9E8C,#4A6A4C);min-height:155px}
+.mi3{background:linear-gradient(160deg,#D4C4A0,#9A8A60);min-height:155px}
+.mosaic-img .img-label{
+  position:absolute;bottom:0.8rem;left:0.8rem;
+  background:rgba(250,247,242,0.88);backdrop-filter:blur(4px);
+  font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.35rem 0.7rem;border-radius:2rem;color:var(--deep)
+}
+
+/* PILLARS */
+.pillars{background:var(--light);padding:7rem 3.5rem;text-align:center}
+.pillars-header .tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:1rem;font-weight:500}
+.pillars-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;margin-bottom:3.5rem;line-height:1.15}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.pillar-card{background:var(--cream);border-radius:20px;overflow:hidden;text-align:left}
+.pillar-img{height:240px;position:relative}
+.pi1{background:linear-gradient(150deg,#E8C4B8,#C4826B)}
+.pi2{background:linear-gradient(150deg,#8A9E8C,#4A7A5C)}
+.pi3{background:linear-gradient(150deg,#C9B89A,#9A8060)}
+.pillar-icon{
+  position:absolute;top:1.2rem;right:1.2rem;
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(250,247,242,0.85);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem
+}
+.pillar-body{padding:1.5rem}
+.pillar-body h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:0.6rem}
+.pillar-body p{font-size:0.83rem;line-height:1.8;opacity:0.6}
+
+/* SPLIT FEATURE */
+.feature{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+.feature-img{position:relative;overflow:hidden}
+.feature-img-inner{width:100%;height:100%;min-height:500px;transition:transform 0.6s ease}
+.feature-img:hover .feature-img-inner{transform:scale(1.03)}
+.fi1{background:linear-gradient(135deg,#3A2A25 0%,#6A4035 40%,#C4826B 100%)}
+.fi2{background:linear-gradient(135deg,#8A9E8C 0%,#4A6A4C 60%,#2A4A2C 100%)}
+.fi3{background:linear-gradient(135deg,#C9B89A 0%,#8A7050 60%,#4A4030 100%)}
+.feature-text{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem}
+.feature-text .tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:1rem;font-weight:500}
+.feature-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;line-height:1.15;margin-bottom:1.25rem}
+.feature-text p{font-size:0.9rem;line-height:1.9;opacity:0.65;margin-bottom:2rem}
+.stat-row{display:flex;gap:2.5rem;margin-bottom:2rem}
+.stat strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--rose)}
+.stat span{font-size:0.75rem;opacity:0.55;letter-spacing:0.06em}
+
+/* GALLERY STRIP */
+.gallery{padding:5rem 3.5rem}
+.gallery h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;margin-bottom:2.5rem;text-align:center}
+.gallery-scroll{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.gallery-item{border-radius:12px;overflow:hidden;aspect-ratio:3/4;position:relative;cursor:pointer}
+.gallery-item:nth-child(2){margin-top:2rem}
+.gallery-item:nth-child(4){margin-top:-2rem}
+.gi1{background:linear-gradient(160deg,#E8C4B8,#A06050)}
+.gi2{background:linear-gradient(160deg,#8A9E8C,#3A6040)}
+.gi3{background:linear-gradient(160deg,#D4C4B0,#8A7050)}
+.gi4{background:linear-gradient(160deg,#C0B0D0,#6A5080)}
+.gi5{background:linear-gradient(160deg,#B8D0C8,#4A7060)}
+.gallery-item .overlay{
+  position:absolute;inset:0;background:rgba(58,42,37,0);
+  display:flex;align-items:flex-end;padding:1rem;
+  transition:background 0.3s
+}
+.gallery-item:hover .overlay{background:rgba(58,42,37,0.35)}
+.overlay-text{color:var(--cream);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;font-weight:500}
+.gallery-item:hover .overlay-text{opacity:1}
+
+/* DARK FEATURE */
+.dark-feature{background:var(--deep);color:var(--cream);padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.dark-feature .tag{color:var(--blush)}
+.dark-feature h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem;color:var(--cream)}
+.dark-feature p{font-size:0.9rem;line-height:1.9;opacity:0.55;margin-bottom:1.5rem}
+.accordion{display:flex;flex-direction:column;gap:0}
+.acc-item{border-top:0.5px solid rgba(232,196,184,0.15);padding:1.1rem 0;cursor:pointer}
+.acc-item:last-child{border-bottom:0.5px solid rgba(232,196,184,0.15)}
+.acc-header{display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;font-weight:500;color:var(--cream)}
+.acc-toggle{width:24px;height:24px;border-radius:50%;border:0.5px solid rgba(232,196,184,0.3);display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:var(--blush);transition:transform 0.3s}
+.acc-body{font-size:0.82rem;line-height:1.8;opacity:0.5;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+.acc-body.open{max-height:200px;padding-top:0.75rem}
+.acc-toggle.open{transform:rotate(45deg)}
+
+.dark-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.dark-img{border-radius:14px;overflow:hidden}
+.dim1{background:linear-gradient(160deg,#6A4035,#3A2A25);min-height:200px}
+.dim2{background:linear-gradient(160deg,#4A6A4C,#2A4A2C);min-height:200px;margin-top:2rem}
+.dim3{background:linear-gradient(160deg,#8A7050,#4A4030);min-height:200px;margin-top:-2rem}
+.dim4{background:linear-gradient(160deg,#6A5080,#3A2A50);min-height:200px}
+
+/* TIPS */
+.tips{padding:7rem 3.5rem;background:var(--sage-light)}
+.tips-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem}
+.tips-header .tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem;font-weight:500}
+.tips-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15}
+.tips-header p{font-size:0.9rem;line-height:1.85;opacity:0.65;align-self:end}
+.tips-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.tip-card{background:var(--cream);border-radius:16px;overflow:hidden}
+.tip-img{height:180px;position:relative;overflow:hidden}
+.ti1{background:linear-gradient(150deg,#E8D4C8,#C4A090)}
+.ti2{background:linear-gradient(150deg,#C8D8C4,#8A9E8C)}
+.ti3{background:linear-gradient(150deg,#D8D0C0,#A09070)}
+.ti4{background:linear-gradient(150deg,#D0C8E0,#9090B0)}
+.tip-body{padding:1.25rem}
+.tip-cat{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rose);margin-bottom:0.4rem;font-weight:500}
+.tip-body h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.5rem;line-height:1.3}
+.tip-body p{font-size:0.78rem;line-height:1.75;opacity:0.6}
+
+/* NEWSLETTER */
+.newsletter{
+  background:var(--deep);padding:6rem 3.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center
+}
+.nl-text .tag{color:var(--blush);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;font-weight:500}
+.nl-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:1rem}
+.nl-text p{font-size:0.9rem;line-height:1.85;opacity:0.5;color:var(--cream)}
+.nl-form{display:flex;flex-direction:column;gap:1rem}
+.nl-input{background:rgba(255,255,255,0.07);border:0.5px solid rgba(232,196,184,0.25);color:var(--cream);font-family:'Jost',sans-serif;font-size:0.88rem;padding:0.95rem 1.25rem;border-radius:2rem;outline:none;transition:border-color 0.25s}
+.nl-input::placeholder{opacity:0.35}
+.nl-input:focus{border-color:rgba(232,196,184,0.6)}
+.nl-btn{background:var(--rose);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:1rem;border-radius:2rem;cursor:pointer;transition:background 0.25s,transform 0.2s}
+.nl-btn:hover{background:var(--blush);color:var(--deep);transform:translateY(-2px)}
+.nl-note{font-size:0.72rem;opacity:0.35;color:var(--cream);text-align:center}
+
+/* FOOTER */
+footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--cream);margin-bottom:1rem;display:block}
+.f-logo em{font-style:italic;color:var(--blush)}
+.f-desc{font-size:0.82rem;line-height:1.8;opacity:0.4}
+.f-col h4{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.25rem;color:var(--blush)}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.f-col ul a{text-decoration:none;font-size:0.84rem;color:var(--cream);opacity:0.4;transition:opacity 0.2s}
+.f-col ul a:hover{opacity:0.9}
+.f-bottom{background:#221814;padding:1.25rem 3.5rem;display:flex;justify-content:space-between;font-size:0.74rem;opacity:0.35;color:var(--cream)}
+
+/* Decorative blobs on hero */
+.blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;z-index:0}
+.blob-1{width:300px;height:300px;background:rgba(196,130,107,0.18);top:-80px;right:20%;animation:float1 8s ease-in-out infinite}
+.blob-2{width:200px;height:200px;background:rgba(138,158,140,0.15);bottom:10%;left:5%;animation:float2 10s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+@keyframes float2{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(20px) scale(0.97)}}
+
+/* NAV COMPACT ON SCROLL */
+nav{transition:padding 0.35s ease,box-shadow 0.35s ease}
+nav.scrolled{padding-top:0.8rem;padding-bottom:0.8rem;box-shadow:0 4px 24px rgba(58,42,37,0.09)}
+
+/* NAV LINK UNDERLINE SLIDE */
+nav ul a{position:relative}
+nav ul a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--rose);transform:scaleX(0);transform-origin:right;transition:transform 0.3s ease}
+nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+
+/* NAV DROPDOWN */
+.nav-more{position:relative}
+.nav-more-trigger{cursor:pointer;user-select:none}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 14px);right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(10px);border:0.5px solid rgba(58,42,37,0.1);border-radius:14px;padding:0.5rem 0;min-width:195px;box-shadow:0 12px 40px rgba(58,42,37,0.13);flex-direction:column}
+.nav-more.open .nav-dropdown{display:flex}
+.nav-dropdown a{padding:0.7rem 1.3rem;font-size:0.73rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--deep);opacity:0.65;transition:opacity 0.2s,background 0.2s;text-decoration:none}
+.nav-dropdown a::after{display:none!important}
+.nav-dropdown a:hover{opacity:1;background:rgba(196,130,107,0.07)}
+
+/* MOBILE NAV */
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--deep);transition:transform 0.3s,opacity 0.3s}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  nav ul{display:none;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(58,42,37,0.1);padding:0.5rem 0;align-items:stretch}
+  nav ul.mobile-open{display:flex}
+  nav ul li{border-top:0.5px solid rgba(58,42,37,0.06)}
+  nav ul a{padding:0.85rem 1.5rem;display:block;opacity:0.75}
+  .nav-toggle{display:flex}
+  .nav-more .nav-dropdown{position:static;border:none;box-shadow:none;background:rgba(58,42,37,0.04);border-radius:0;padding:0;display:none}
+  .nav-more.open .nav-dropdown{display:flex}
+  .nav-dropdown a{padding:0.75rem 2.5rem}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{display:none}
+  .hero-left{padding:4rem 1.5rem 3rem}
+  .intro{grid-template-columns:1fr;gap:2.5rem;padding:4rem 1.5rem}
+  .intro-mosaic{display:none}
+  .pillars{padding:4rem 1.5rem}
+  .pillars-grid{grid-template-columns:1fr}
+  .feature{grid-template-columns:1fr}
+  .feature-img-inner{min-height:280px}
+  .gallery{padding:4rem 1.5rem}
+  .gallery-scroll{grid-template-columns:repeat(2,1fr)}
+  .dark-feature{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem}
+  .dark-img-grid{display:none}
+  .tips{padding:4rem 1.5rem}
+  .tips-header{grid-template-columns:1fr;gap:1.5rem}
+  .tips-grid{grid-template-columns:1fr 1fr}
+  .newsletter{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem}
+  footer{grid-template-columns:1fr 1fr;gap:2rem;padding:3rem 1.5rem}
+  .f-bottom{padding:1rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center}
+}
+@media(max-width:480px){
+  footer{grid-template-columns:1fr}
+  .tips-grid{grid-template-columns:1fr}
+  .gallery-scroll{grid-template-columns:1fr 1fr}
+}
+
+/* HERO EYEBROW GRADIENT TEXT */
+.hero-eyebrow{background:linear-gradient(90deg,var(--rose),var(--gold),var(--rose));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradient-text 4s linear infinite}
+@keyframes gradient-text{0%{background-position:0% center}100%{background-position:200% center}}
+
+/* HERO COLLAGE CONTINUOUS FLOAT */
+.hi1{animation:float-a 7s ease-in-out infinite}
+.hi2{animation:float-b 9s ease-in-out infinite 1.2s}
+.hi3{animation:float-c 8s ease-in-out infinite 0.6s}
+.hi4{animation:float-d 10s ease-in-out infinite 2s}
+@keyframes float-a{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes float-b{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+@keyframes float-c{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes float-d{0%,100%{transform:translateY(0)}50%{transform:translateY(12px)}}
+
+/* PULSE RING ON HERO FLOAT BADGE */
+.hero-float{position:relative}
+.hero-float::before{content:'';position:absolute;inset:-6px;border-radius:19px;border:1.5px solid rgba(196,130,107,0.5);animation:pulse-border 2.5s ease-in-out infinite;pointer-events:none}
+@keyframes pulse-border{0%,100%{opacity:0.7;transform:scale(1)}50%{opacity:0;transform:scale(1.07)}}
+
+/* SHIMMER SWEEP ON GRADIENT IMAGE BLOCKS */
+.hero-img,.mosaic-img,.pillar-img,.dark-img,.tip-img,.feature-img-inner{position:relative;overflow:hidden}
+.hero-img::after,.mosaic-img::after,.pillar-img::after,.dark-img::after,.tip-img::after,.feature-img-inner::after{
+  content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.13),transparent);
+  transform:skewX(-15deg);animation:shimmer-sweep 5s ease-in-out infinite;pointer-events:none;
+}
+@keyframes shimmer-sweep{0%{left:-80%}55%,100%{left:160%}}
+.hi1::after{animation-delay:0s}.hi2::after{animation-delay:0.8s}.hi3::after{animation-delay:1.6s}.hi4::after{animation-delay:2.4s}
+.mi1::after{animation-delay:0.4s}.mi2::after{animation-delay:1.2s}.mi3::after{animation-delay:2s}
+.pi1::after{animation-delay:0.6s}.pi2::after{animation-delay:1.4s}.pi3::after{animation-delay:2.2s}
+.fi1::after{animation-delay:0.3s}.fi2::after{animation-delay:1.1s}.fi3::after{animation-delay:1.9s}
+.dim1::after{animation-delay:0.2s}.dim2::after{animation-delay:1s}.dim3::after{animation-delay:1.8s}.dim4::after{animation-delay:2.6s}
+.ti1::after{animation-delay:0.5s}.ti2::after{animation-delay:1.3s}.ti3::after{animation-delay:2.1s}.ti4::after{animation-delay:2.9s}
+
+/* CARD HOVER (base transition — tilt done via JS) */
+.pillar-card,.tip-card{transition:transform 0.25s ease,box-shadow 0.25s ease}
+
+/* CURSOR GLOW */
+.cursor-glow{position:fixed;width:480px;height:480px;background:radial-gradient(circle,rgba(196,130,107,0.07) 0%,transparent 70%);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:9999}
+
+/* BUTTON RIPPLE */
+.btn-primary,.btn-outline,.nl-btn{position:relative;overflow:hidden}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.28);transform:scale(0);animation:ripple-anim 0.55s linear;pointer-events:none}
+@keyframes ripple-anim{to{transform:scale(4);opacity:0}}
+
+/* GALLERY ITEM SHIMMER (uses ::before to avoid overlay conflict) */
+.gallery-item::before{content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transform:skewX(-15deg);animation:shimmer-sweep 5s ease-in-out infinite;pointer-events:none;z-index:1}
+.gi1::before{animation-delay:0.1s}.gi2::before{animation-delay:0.9s}.gi3::before{animation-delay:1.7s}.gi4::before{animation-delay:2.5s}.gi5::before{animation-delay:3.2s}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <ul>
+    <li><a href="index.html" class="nav-active">Home</a></li>
+    <li><a href="hydration.html">Inner Care</a></li>
+    <li><a href="collagen.html">Collagen</a></li>
+    <li><a href="blog.html">Soul &amp; Craft</a></li>
+    <li class="nav-more">
+      <a href="#" class="nav-more-trigger">More &#9662;</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About Me</a>
+        <a href="community.html">Join the Community</a>
+        <a href="assessment.html">Health Assessment</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="hero-left">
+    <p class="hero-eyebrow reveal">Clean Beauty · Holistic Wellness</p>
+    <h1 class="hero-title reveal delay-1">Where health meets <em>radiant</em> beauty</h1>
+    <p class="hero-desc reveal delay-2">We explore the science and soul of natural beauty — helping you understand your skin, body, and the ingredients that truly nourish them.</p>
+    <div class="btn-group reveal delay-3">
+      <a href="assessment.html" class="btn-primary">Start Your Health Assessment</a>
+      <a href="community.html" class="btn-outline">Explore the Programmes</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-collage">
+      <div class="hero-img hi1"></div>
+      <div class="hero-img hi2"></div>
+      <div class="hero-img hi3"></div>
+      <div class="hero-img hi4"></div>
+    </div>
+    <div class="hero-float reveal delay-4">
+      <strong data-count="12" data-suffix="k+">12k+</strong>
+      readers this month
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="mdot"></span>Skin science</span>
+    <span class="marquee-item"><span class="mdot"></span>Botanical ingredients</span>
+    <span class="marquee-item"><span class="mdot"></span>Holistic wellness</span>
+    <span class="marquee-item"><span class="mdot"></span>Clean beauty guides</span>
+    <span class="marquee-item"><span class="mdot"></span>Mindful living</span>
+    <span class="marquee-item"><span class="mdot"></span>Expert tips</span>
+    <span class="marquee-item"><span class="mdot"></span>Skin science</span>
+    <span class="marquee-item"><span class="mdot"></span>Botanical ingredients</span>
+    <span class="marquee-item"><span class="mdot"></span>Holistic wellness</span>
+    <span class="marquee-item"><span class="mdot"></span>Clean beauty guides</span>
+    <span class="marquee-item"><span class="mdot"></span>Mindful living</span>
+    <span class="marquee-item"><span class="mdot"></span>Expert tips</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-text reveal-left">
+    <p class="tag">About us</p>
+    <h2>Beauty rooted in knowledge & <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--rose)">nature</em></h2>
+    <p>We believe the most powerful beauty tool you have is understanding. Our guides, deep-dives, and expert articles help you decode labels, build rituals, and make confident choices for your skin and wellbeing.</p>
+    <p>No selling. Just honest, science-backed information written by people who truly care about what they put on their skin.</p>
+    <button class="btn-primary" style="margin-top:1.5rem;width:fit-content">Read our story</button>
+  </div>
+  <div class="intro-mosaic reveal-right">
+    <div class="mosaic-img tall mi1"><div class="img-label">Botanical extracts</div></div>
+    <div class="mosaic-img mi2"><div class="img-label">Face rituals</div></div>
+    <div class="mosaic-img mi3"><div class="img-label">Clean formulas</div></div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="pillars-header">
+    <p class="tag reveal">What we cover</p>
+    <h2 class="reveal delay-1">Three pillars of conscious beauty</h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card reveal delay-1">
+      <div class="pillar-img pi1">
+        <div class="pillar-icon">🌿</div>
+      </div>
+      <div class="pillar-body">
+        <h3>Skin science</h3>
+        <p>From barrier repair to actives layering — we break down complex dermatology into practical, approachable guidance you can actually use in your daily routine.</p>
+      </div>
+    </div>
+    <div class="pillar-card reveal delay-2">
+      <div class="pillar-img pi2">
+        <div class="pillar-icon">🌱</div>
+      </div>
+      <div class="pillar-body">
+        <h3>Natural ingredients</h3>
+        <p>Discover the stories behind botanical extracts, plant oils, and natural actives — what they do, how they work, and which ones are genuinely worth your attention.</p>
+      </div>
+    </div>
+    <div class="pillar-card reveal delay-3">
+      <div class="pillar-img pi3">
+        <div class="pillar-icon">✨</div>
+      </div>
+      <div class="pillar-body">
+        <h3>Holistic wellness</h3>
+        <p>Beauty begins from within. We explore nutrition, sleep, stress, and lifestyle habits that shape the way your skin looks, feels, and ages over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT FEATURE 1 -->
+<section class="feature">
+  <div class="feature-img reveal-left">
+    <div class="feature-img-inner fi1"></div>
+  </div>
+  <div class="feature-text reveal-right">
+    <p class="tag">Skin science</p>
+    <h2>Understanding your skin barrier</h2>
+    <p>Your skin barrier is your body's first line of defence. When it's healthy, your complexion looks plump, calm, and radiant. When it's compromised, sensitivity, dryness, and breakouts follow.</p>
+    <div class="stat-row">
+      <div class="stat"><strong data-count="71" data-suffix="%">71%</strong><span>of people unknowingly damage their skin barrier daily</span></div>
+      <div class="stat"><strong>3–4</strong><span>weeks to fully restore a compromised barrier</span></div>
+    </div>
+    <button class="btn-outline">Read the full guide →</button>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<section class="gallery">
+  <h2 class="reveal">Nature in every drop</h2>
+  <div class="gallery-scroll">
+    <div class="gallery-item gi1 reveal delay-1"><div class="overlay"><span class="overlay-text">Rose hip</span></div></div>
+    <div class="gallery-item gi2 reveal delay-2"><div class="overlay"><span class="overlay-text">Green tea</span></div></div>
+    <div class="gallery-item gi3 reveal delay-3"><div class="overlay"><span class="overlay-text">Argan oil</span></div></div>
+    <div class="gallery-item gi4 reveal delay-4"><div class="overlay"><span class="overlay-text">Lavender</span></div></div>
+    <div class="gallery-item gi5 reveal"><div class="overlay"><span class="overlay-text">Aloe vera</span></div></div>
+  </div>
+</section>
+
+<!-- SPLIT FEATURE 2 -->
+<section class="feature" style="direction:rtl">
+  <div class="feature-img reveal-right" style="direction:ltr">
+    <div class="feature-img-inner fi2"></div>
+  </div>
+  <div class="feature-text reveal-left" style="direction:ltr">
+    <p class="tag">Botanicals</p>
+    <h2>The power of plant-based actives</h2>
+    <p>Plants have been used in skincare for thousands of years — and modern science is now confirming why. From antioxidant-rich berries to adaptogenic herbs, nature holds potent answers for almost every skin concern.</p>
+    <p>Our ingredient library decodes 200+ botanical actives so you know exactly what you're putting on your skin and why.</p>
+    <button class="btn-outline" style="margin-top:0.5rem">Explore ingredient library →</button>
+  </div>
+</section>
+
+<!-- DARK FEATURE / FAQ -->
+<section class="dark-feature">
+  <div class="dark-img-grid reveal-left">
+    <div class="dark-img dim1"></div>
+    <div class="dark-img dim2"></div>
+    <div class="dark-img dim3"></div>
+    <div class="dark-img dim4"></div>
+  </div>
+  <div class="reveal-right">
+    <p class="tag">Common questions</p>
+    <h2 style="color:var(--cream)">Everything you've wondered about clean beauty</h2>
+    <p>We answer the questions your dermatologist never had time for.</p>
+    <div class="accordion">
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-header">What does "clean beauty" actually mean? <span class="acc-toggle">+</span></div>
+        <div class="acc-body">Clean beauty refers to products formulated without ingredients considered harmful or controversial — such as parabens, sulfates, synthetic fragrances, and certain preservatives. It's as much about what's left out as what's included.</div>
+      </div>
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-header">Is natural always better for skin? <span class="acc-toggle">+</span></div>
+        <div class="acc-body">Not necessarily. Both natural and synthetic ingredients can be effective or irritating depending on the individual. The key is understanding what each ingredient does and how your skin responds to it.</div>
+      </div>
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-header">How do I build a simple skincare routine? <span class="acc-toggle">+</span></div>
+        <div class="acc-body">Start with three basics: a gentle cleanser, a moisturiser, and SPF (for daytime). Once your skin is stable and comfortable, you can layer in targeted treatments like serums or exfoliants.</div>
+      </div>
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-header">Can diet really affect my skin? <span class="acc-toggle">+</span></div>
+        <div class="acc-body">Yes — significantly. Research links high glycaemic diets, dairy, and processed foods to increased breakouts in some people. Conversely, antioxidant-rich foods, omega-3s, and good hydration consistently support clearer, healthier skin.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS / JOURNAL -->
+<section class="tips">
+  <div class="tips-header">
+    <div class="reveal-left">
+      <p class="tag">From the journal</p>
+      <h2>Guides to glow by</h2>
+    </div>
+    <p class="reveal-right" style="font-size:0.9rem;line-height:1.85;opacity:0.65">Fresh articles, expert interviews, and evidence-based guides — all written to help you feel more confident and informed about your skin and health.</p>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card reveal delay-1">
+      <div class="tip-img ti1"></div>
+      <div class="tip-body">
+        <p class="tip-cat">Skincare</p>
+        <h4>Retinol: A beginner's complete guide</h4>
+        <p>Everything you need to know before adding this potent active to your routine — and how to avoid common mistakes.</p>
+      </div>
+    </div>
+    <div class="tip-card reveal delay-2">
+      <div class="tip-img ti2"></div>
+      <div class="tip-body">
+        <p class="tip-cat">Wellness</p>
+        <h4>How sleep transforms your skin overnight</h4>
+        <p>The science behind your skin's nightly renewal process and simple habits to make the most of it.</p>
+      </div>
+    </div>
+    <div class="tip-card reveal delay-3">
+      <div class="tip-img ti3"></div>
+      <div class="tip-body">
+        <p class="tip-cat">Ingredients</p>
+        <h4>Hyaluronic acid: myths vs. reality</h4>
+        <p>It's one of the most popular skincare ingredients on the planet — but do you really know how it works?</p>
+      </div>
+    </div>
+    <div class="tip-card reveal delay-4">
+      <div class="tip-img ti4"></div>
+      <div class="tip-body">
+        <p class="tip-cat">Nutrition</p>
+        <h4>The gut-skin connection explained</h4>
+        <p>Why what you eat may matter more than what you apply — and which foods consistently support healthy skin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="nl-text reveal-left">
+    <p class="tag">Stay informed</p>
+    <h2>Beauty wisdom, delivered weekly</h2>
+    <p>Join over 12,000 readers who get our best guides, ingredient breakdowns, and wellness tips — straight to their inbox. No spam, ever.</p>
+  </div>
+  <div class="reveal-right">
+    <div class="nl-form">
+      <input class="nl-input" type="text" placeholder="Your name" />
+      <input class="nl-input" type="email" placeholder="Your email address" />
+      <button class="nl-btn">Subscribe to the journal</button>
+      <p class="nl-note">We respect your privacy. Unsubscribe at any time.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
+    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+  </div>
+  <div class="f-col">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="hydration.html">Inner Care</a></li>
+      <li><a href="collagen.html">Collagen</a></li>
+      <li><a href="blog.html">Soul &amp; Craft</a></li>
+      <li><a href="assessment.html">Health Assessment</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html">About Anda</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="#">Newsletter</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Pinterest</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="f-bottom">
+  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>Privacy policy · Terms of use</span>
+</div>
+
+<style>
+/* ── PHOTO BACKGROUNDS ──────────────────────────────────────── */
+/* Hero collage */
+.hi1{background:linear-gradient(135deg,rgba(212,160,144,.38),rgba(138,96,85,.42)),url('https://picsum.photos/seed/hi1sk/600/700')center/cover no-repeat}
+.hi2{background:linear-gradient(135deg,rgba(138,158,140,.38),rgba(90,122,92,.42)),url('https://picsum.photos/seed/hi2bot/600/700')center/cover no-repeat}
+.hi3{background:linear-gradient(135deg,rgba(201,184,154,.38),rgba(138,112,85,.42)),url('https://picsum.photos/seed/hi3nat/600/700')center/cover no-repeat}
+.hi4{background:linear-gradient(135deg,rgba(184,160,196,.38),rgba(122,96,144,.42)),url('https://picsum.photos/seed/hi4spa/600/700')center/cover no-repeat}
+
+/* Intro mosaic */
+.mi1{background:linear-gradient(160deg,rgba(201,160,144,.32),rgba(138,85,69,.38)),url('https://picsum.photos/seed/mi1face/600/800')center/cover no-repeat}
+.mi2{background:linear-gradient(160deg,rgba(138,158,140,.32),rgba(74,106,76,.38)),url('https://picsum.photos/seed/mi2ritual/600/400')center/cover no-repeat}
+.mi3{background:linear-gradient(160deg,rgba(212,196,160,.32),rgba(154,138,96,.38)),url('https://picsum.photos/seed/mi3formula/600/400')center/cover no-repeat}
+
+/* Pillar cards */
+.pi1{background:linear-gradient(150deg,rgba(232,196,184,.42),rgba(196,130,107,.48)),url('https://picsum.photos/seed/pi1skin/600/400')center/cover no-repeat}
+.pi2{background:linear-gradient(150deg,rgba(138,158,140,.42),rgba(74,122,92,.48)),url('https://picsum.photos/seed/pi2plant/600/400')center/cover no-repeat}
+.pi3{background:linear-gradient(150deg,rgba(201,184,154,.42),rgba(154,128,96,.48)),url('https://picsum.photos/seed/pi3well/600/400')center/cover no-repeat}
+
+/* Split features */
+.fi1{background:linear-gradient(135deg,rgba(58,42,37,.48),rgba(106,64,53,.42),rgba(196,130,107,.36)),url('https://picsum.photos/seed/fi1barrier/800/700')center/cover no-repeat}
+.fi2{background:linear-gradient(135deg,rgba(138,158,140,.4),rgba(74,106,76,.44),rgba(42,74,44,.48)),url('https://picsum.photos/seed/fi2botanic/800/700')center/cover no-repeat}
+.fi3{background:linear-gradient(135deg,rgba(201,184,154,.4),rgba(138,112,80,.44),rgba(74,64,48,.48)),url('https://picsum.photos/seed/fi3ritual/800/700')center/cover no-repeat}
+
+/* Gallery strip */
+.gi1{background:linear-gradient(160deg,rgba(232,196,184,.28),rgba(160,96,80,.32)),url('https://picsum.photos/seed/gi1rose/400/600')center/cover no-repeat}
+.gi2{background:linear-gradient(160deg,rgba(138,158,140,.28),rgba(58,96,64,.32)),url('https://picsum.photos/seed/gi2tea/400/600')center/cover no-repeat}
+.gi3{background:linear-gradient(160deg,rgba(212,196,176,.28),rgba(138,112,80,.32)),url('https://picsum.photos/seed/gi3argan/400/600')center/cover no-repeat}
+.gi4{background:linear-gradient(160deg,rgba(192,176,208,.28),rgba(106,80,128,.32)),url('https://picsum.photos/seed/gi4lavender/400/600')center/cover no-repeat}
+.gi5{background:linear-gradient(160deg,rgba(184,208,200,.28),rgba(74,112,96,.32)),url('https://picsum.photos/seed/gi5aloe/400/600')center/cover no-repeat}
+
+/* Dark section images */
+.dim1{background:linear-gradient(160deg,rgba(106,64,53,.55),rgba(58,42,37,.65)),url('https://picsum.photos/seed/dim1dk/400/400')center/cover no-repeat}
+.dim2{background:linear-gradient(160deg,rgba(74,106,76,.55),rgba(42,74,44,.65)),url('https://picsum.photos/seed/dim2fst/400/400')center/cover no-repeat}
+.dim3{background:linear-gradient(160deg,rgba(138,112,80,.55),rgba(74,64,48,.65)),url('https://picsum.photos/seed/dim3erth/400/400')center/cover no-repeat}
+.dim4{background:linear-gradient(160deg,rgba(106,80,128,.55),rgba(58,42,80,.65)),url('https://picsum.photos/seed/dim4ngt/400/400')center/cover no-repeat}
+
+/* Journal tip cards */
+.ti1{background:linear-gradient(150deg,rgba(232,212,200,.38),rgba(196,160,144,.44)),url('https://picsum.photos/seed/ti1ret/400/300')center/cover no-repeat}
+.ti2{background:linear-gradient(150deg,rgba(200,216,196,.38),rgba(138,158,140,.44)),url('https://picsum.photos/seed/ti2slp/400/300')center/cover no-repeat}
+.ti3{background:linear-gradient(150deg,rgba(216,208,192,.38),rgba(160,144,112,.44)),url('https://picsum.photos/seed/ti3ser/400/300')center/cover no-repeat}
+.ti4{background:linear-gradient(150deg,rgba(208,200,224,.38),rgba(144,144,176,.44)),url('https://picsum.photos/seed/ti4gut/400/300')center/cover no-repeat}
+</style>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+
+// Accordion
+function toggleAcc(item) {
+  const body = item.querySelector('.acc-body');
+  const toggle = item.querySelector('.acc-toggle');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.acc-toggle').forEach(t => t.classList.remove('open'));
+  if (!isOpen) { body.classList.add('open'); toggle.classList.add('open'); }
+}
+
+// Nav compact on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Mobile nav toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navUl = document.querySelector('nav ul');
+if (navToggle && navUl) {
+  navToggle.addEventListener('click', () => {
+    navUl.classList.toggle('mobile-open');
+    const spans = navToggle.querySelectorAll('span');
+    const open = navUl.classList.contains('mobile-open');
+    spans[0].style.transform = open ? 'translateY(6.5px) rotate(45deg)' : '';
+    spans[1].style.opacity = open ? '0' : '';
+    spans[2].style.transform = open ? 'translateY(-6.5px) rotate(-45deg)' : '';
+  });
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target)) {
+      navUl.classList.remove('mobile-open');
+      navToggle.querySelectorAll('span').forEach(s => { s.style.transform=''; s.style.opacity=''; });
+    }
+  });
+}
+
+// More dropdown
+const navMore = document.querySelector('.nav-more');
+if (navMore) {
+  navMore.querySelector('.nav-more-trigger').addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    navMore.classList.toggle('open');
+  });
+  document.addEventListener('click', e => { if (!navMore.contains(e.target)) navMore.classList.remove('open'); });
+}
+
+// Cursor glow
+const glow = document.createElement('div');
+glow.className = 'cursor-glow';
+document.body.appendChild(glow);
+let glowX = window.innerWidth / 2, glowY = window.innerHeight / 2, currX = glowX, currY = glowY;
+document.addEventListener('mousemove', e => { glowX = e.clientX; glowY = e.clientY; });
+(function animateGlow() {
+  currX += (glowX - currX) * 0.07;
+  currY += (glowY - currY) * 0.07;
+  glow.style.left = currX + 'px';
+  glow.style.top = currY + 'px';
+  requestAnimationFrame(animateGlow);
+})();
+
+// Counter animation
+function countUp(el, target, suffix) {
+  const duration = 1800;
+  const start = performance.now();
+  (function update(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(eased * target) + suffix;
+    if (p < 1) requestAnimationFrame(update);
+    else el.textContent = target + suffix;
+  })(start);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    countUp(el, parseFloat(el.dataset.count), el.dataset.suffix || '');
+    counterObserver.unobserve(el);
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// 3D card tilt
+document.querySelectorAll('.pillar-card, .tip-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-6px) scale(1.01)`;
+    card.style.boxShadow = `${-x * 14}px ${y * 14}px 32px rgba(58,42,37,0.13)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  });
+});
+
+// Button ripple
+document.querySelectorAll('.btn-primary, .btn-outline, .nl-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const r = btn.getBoundingClientRect();
+    const size = Math.max(r.width, r.height);
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - r.left - size/2}px;top:${e.clientY - r.top - size/2}px`;
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+</script>
+</body>
+</html>

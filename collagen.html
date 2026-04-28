@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collagen & Cellular Nourishment — Glow Holistic Living</title>
+<link rel="stylesheet" href="glow.css">
+<style>
+/* INTRO SPLIT */
+.col-intro{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.col-intro-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem}
+.col-intro-text h2 em{font-style:italic;color:var(--rose)}
+.col-intro-text p{font-size:0.92rem;line-height:1.9;opacity:0.65;margin-bottom:1rem}
+.col-intro-img{border-radius:20px;overflow:hidden}
+.col-intro-img-inner{min-height:500px;background:linear-gradient(150deg,rgba(232,196,184,.35),rgba(196,130,107,.35)),url('https://picsum.photos/seed/collagen1/700/900')center/cover no-repeat;position:relative}
+.col-badge{position:absolute;top:1.5rem;right:1.5rem;background:rgba(250,247,242,0.92);backdrop-filter:blur(6px);padding:1rem 1.2rem;border-radius:14px;text-align:center}
+.col-badge strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--rose);line-height:1}
+.col-badge span{font-size:0.68rem;letter-spacing:0.08em;opacity:0.55}
+
+/* BENEFITS */
+.benefits{background:var(--light);padding:7rem 3.5rem}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3.5rem}
+.benefit-card{background:var(--cream);border-radius:20px;padding:2.5rem;display:flex;gap:1.5rem;align-items:flex-start;transition:transform 0.25s,box-shadow 0.25s}
+.benefit-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(58,42,37,0.09)}
+.benefit-icon{font-size:2rem;flex-shrink:0;width:56px;height:56px;border-radius:16px;background:var(--light);display:flex;align-items:center;justify-content:center}
+.benefit-body h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.5rem}
+.benefit-body p{font-size:0.83rem;line-height:1.8;opacity:0.6}
+
+/* FOOD SOURCES */
+.sources{padding:7rem 3.5rem;display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:center}
+.sources-img{border-radius:20px;overflow:hidden}
+.sources-img-inner{min-height:460px;background:linear-gradient(150deg,rgba(201,184,154,.35),rgba(138,112,80,.35)),url('https://picsum.photos/seed/foodcollagen/700/800')center/cover no-repeat}
+.sources-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.source-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:0.5px solid rgba(58,42,37,0.1)}
+.source-item:first-child{border-top:0.5px solid rgba(58,42,37,0.1)}
+.source-dot{width:8px;height:8px;border-radius:50%;background:var(--rose);flex-shrink:0}
+.source-name{font-weight:500;font-size:0.9rem;flex:1}
+.source-note{font-size:0.78rem;opacity:0.5}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--deep);padding:7rem 3.5rem;color:var(--cream)}
+.testimonials .tag{color:var(--blush)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
+.testi-card{background:rgba(255,255,255,0.05);border:0.5px solid rgba(232,196,184,0.15);border-radius:20px;padding:2rem;display:flex;flex-direction:column;gap:1.25rem}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;line-height:1.6;color:var(--cream);font-style:italic}
+.testi-stars{color:var(--gold);font-size:0.85rem;letter-spacing:0.1em}
+.testi-person{display:flex;align-items:center;gap:0.9rem;margin-top:auto}
+.testi-avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.testi-avatar img{width:100%;height:100%;object-fit:cover}
+.testi-name{font-size:0.82rem;font-weight:500;color:var(--cream)}
+.testi-detail{font-size:0.72rem;opacity:0.45;color:var(--cream)}
+
+/* BEFORE / AFTER */
+.before-after{padding:7rem 3.5rem}
+.ba-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem;margin-top:3.5rem;max-width:900px;margin-left:auto;margin-right:auto}
+.ba-card{border-radius:20px;overflow:hidden;position:relative}
+.ba-img{min-height:380px;position:relative}
+.ba-before{background:linear-gradient(160deg,rgba(180,160,155,.5),rgba(130,110,105,.5)),url('https://picsum.photos/seed/skinbefore/600/700')center/cover no-repeat}
+.ba-after{background:linear-gradient(160deg,rgba(196,130,107,.4),rgba(232,196,184,.4)),url('https://picsum.photos/seed/skinafter/600/700')center/cover no-repeat}
+.ba-label{position:absolute;top:1.2rem;left:1.2rem;background:rgba(250,247,242,0.92);backdrop-filter:blur(4px);font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.85rem;border-radius:2rem;color:var(--deep)}
+.ba-caption{background:var(--light);padding:1.5rem;text-align:center}
+.ba-caption h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;margin-bottom:0.3rem}
+.ba-caption p{font-size:0.78rem;opacity:0.55;line-height:1.6}
+
+/* CTA */
+.col-cta{background:var(--sage-light);padding:7rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.col-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;margin-bottom:1rem;line-height:1.15}
+.col-cta h2 em{font-style:italic;color:var(--rose)}
+.col-cta p{font-size:0.92rem;line-height:1.85;opacity:0.65;max-width:480px;margin:0 auto 2.5rem}
+
+@media(max-width:768px){
+  .col-intro,.sources{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem}
+  .col-intro-img,.sources-img{order:-1}
+  .benefits{padding:4rem 1.5rem}
+  .benefits-grid{grid-template-columns:1fr}
+  .testimonials{padding:4rem 1.5rem}
+  .testi-grid{grid-template-columns:1fr}
+  .before-after{padding:4rem 1.5rem}
+  .ba-grid{grid-template-columns:1fr;max-width:480px}
+  .col-cta{padding:4rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="hydration.html">Inner Care</a></li>
+    <li><a href="collagen.html" class="nav-active">Collagen</a></li>
+    <li><a href="blog.html">Soul &amp; Craft</a></li>
+    <li class="nav-more">
+      <a href="#" class="nav-more-trigger">More &#9662;</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About Me</a>
+        <a href="community.html">Join the Community</a>
+        <a href="assessment.html">Health Assessment</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <span class="eyebrow reveal">Cellular nourishment</span>
+  <h1 class="reveal delay-1">Collagen — your body's <em>living scaffold</em></h1>
+  <p class="sub reveal delay-2">The most abundant protein in your body, collagen holds everything together — from your skin to your joints to your gut lining. Learn how to protect and rebuild it naturally.</p>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="mdot"></span>Skin elasticity</span>
+    <span class="marquee-item"><span class="mdot"></span>Joint support</span>
+    <span class="marquee-item"><span class="mdot"></span>Gut lining repair</span>
+    <span class="marquee-item"><span class="mdot"></span>Hair strength</span>
+    <span class="marquee-item"><span class="mdot"></span>Bone density</span>
+    <span class="marquee-item"><span class="mdot"></span>Cellular renewal</span>
+    <span class="marquee-item"><span class="mdot"></span>Skin elasticity</span>
+    <span class="marquee-item"><span class="mdot"></span>Joint support</span>
+    <span class="marquee-item"><span class="mdot"></span>Gut lining repair</span>
+    <span class="marquee-item"><span class="mdot"></span>Hair strength</span>
+    <span class="marquee-item"><span class="mdot"></span>Bone density</span>
+    <span class="marquee-item"><span class="mdot"></span>Cellular renewal</span>
+  </div>
+</div>
+
+<!-- WHAT IS COLLAGEN -->
+<section class="col-intro">
+  <div class="col-intro-text reveal-left">
+    <span class="tag">The science</span>
+    <h2>What is collagen and why does it <em>decline</em>?</h2>
+    <p>Collagen is a structural protein that makes up roughly 30% of all the protein in your body. It provides the framework that keeps your skin firm, your joints cushioned, your gut lining intact, and your bones dense.</p>
+    <p>From our mid-twenties, the body produces approximately 1% less collagen each year. Sun exposure, processed foods, stress, and poor sleep accelerate this decline — making targeted nutrition and lifestyle choices essential.</p>
+    <p>The good news: collagen synthesis can be actively supported. Vitamin C, zinc, glycine-rich foods, and reducing inflammation all stimulate the body's natural collagen production.</p>
+    <div class="btn-group" style="margin-top:2rem">
+      <a href="assessment.html" class="btn-primary">Check your collagen levels</a>
+    </div>
+  </div>
+  <div class="col-intro-img reveal-right">
+    <div class="col-intro-img-inner img-shimmer">
+      <div class="col-badge"><strong>−1%</strong><span>collagen per year after 25</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="section-header">
+    <span class="tag reveal">Why it matters</span>
+    <h2 class="reveal delay-1">Four pillars of <em>collagen health</em></h2>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card reveal delay-1">
+      <div class="benefit-icon">✨</div>
+      <div class="benefit-body">
+        <h3>Skin firmness &amp; glow</h3>
+        <p>Collagen fibres give skin its structure and bounce. As levels decline, skin loses density and elasticity — leading to fine lines, sagging, and reduced radiance. Supporting collagen is the most direct route to youthful, resilient skin.</p>
+      </div>
+    </div>
+    <div class="benefit-card reveal delay-2">
+      <div class="benefit-icon">🦴</div>
+      <div class="benefit-body">
+        <h3>Joint &amp; bone support</h3>
+        <p>Collagen is the main component of cartilage — the cushioning between your joints. Rebuilding collagen supports joint comfort, reduces stiffness, and protects bone mineral density as you age.</p>
+      </div>
+    </div>
+    <div class="benefit-card reveal delay-3">
+      <div class="benefit-icon">🌿</div>
+      <div class="benefit-body">
+        <h3>Gut lining integrity</h3>
+        <p>The gut lining is largely made of collagen. When it's compromised, undigested particles enter the bloodstream — triggering inflammation and food sensitivities. Collagen directly supports gut barrier repair.</p>
+      </div>
+    </div>
+    <div class="benefit-card reveal delay-4">
+      <div class="benefit-icon">💫</div>
+      <div class="benefit-body">
+        <h3>Hair, nails &amp; energy</h3>
+        <p>Collagen provides the amino acids needed for keratin synthesis — the building block of hair and nails. It also supports muscle recovery and metabolic function, influencing how energised you feel daily.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD SOURCES -->
+<section class="sources">
+  <div class="sources-img reveal-left">
+    <div class="sources-img-inner img-shimmer"></div>
+  </div>
+  <div class="reveal-right">
+    <span class="tag">Natural sources</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem">Foods that <em>build &amp; protect</em> your collagen</h2>
+    <p style="font-size:0.9rem;line-height:1.9;opacity:0.65;margin-bottom:2rem">Before reaching for supplements, focus on the foods your body needs to produce and protect collagen naturally. These are the foundations.</p>
+    <ul class="sources-list">
+      <li class="source-item"><div class="source-dot"></div><span class="source-name">Bone broth</span><span class="source-note">Direct collagen peptides + glycine</span></li>
+      <li class="source-item"><div class="source-dot"></div><span class="source-name">Citrus fruits</span><span class="source-note">Vitamin C triggers collagen synthesis</span></li>
+      <li class="source-item"><div class="source-dot"></div><span class="source-name">Leafy greens</span><span class="source-note">Chlorophyll stabilises collagen precursors</span></li>
+      <li class="source-item"><div class="source-dot"></div><span class="source-name">Eggs (especially yolks)</span><span class="source-note">Proline — a key collagen amino acid</span></li>
+      <li class="source-item"><div class="source-dot"></div><span class="source-name">Berries</span><span class="source-note">Antioxidants protect against collagen breakdown</span></li>
+      <li class="source-item"><div class="source-dot"></div><span class="source-name">Zinc-rich foods (pumpkin seeds)</span><span class="source-note">Activates collagen-producing proteins</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-header" style="text-align:left;margin-bottom:0">
+      <span class="tag reveal">Real results</span>
+      <h2 class="reveal delay-1" style="color:var(--cream)">Voices from the <em style="color:var(--blush)">Glow community</em></h2>
+    </div>
+    <div class="testi-grid" style="margin-top:3rem">
+      <div class="testi-card reveal delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"After three months following Anda's collagen protocol, my skin genuinely looks different. More plump, more even, more like me — ten years ago."</p>
+        <div class="testi-person">
+          <div class="testi-avatar"><img src="https://picsum.photos/seed/testi1w/100/100" alt="Sarah"></div>
+          <div><div class="testi-name">Sarah M.</div><div class="testi-detail">Age 43 · 3 months in programme</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"My joint pain had been affecting my morning runs for years. I was skeptical about collagen nutrition — but within six weeks my knees felt noticeably better."</p>
+        <div class="testi-person">
+          <div class="testi-avatar"><img src="https://picsum.photos/seed/testi2w/100/100" alt="Claire"></div>
+          <div><div class="testi-name">Claire T.</div><div class="testi-detail">Age 51 · Holistic programme member</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal delay-3">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"The gut protocol changed everything. My bloating is almost gone, my energy has doubled, and my skin has cleared. I didn't expect collagen to be the missing piece."</p>
+        <div class="testi-person">
+          <div class="testi-avatar"><img src="https://picsum.photos/seed/testi3w/100/100" alt="Marta"></div>
+          <div><div class="testi-name">Marta K.</div><div class="testi-detail">Age 37 · 6 months in programme</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after">
+  <div class="section-header">
+    <span class="tag reveal">Visible transformation</span>
+    <h2 class="reveal delay-1">What collagen support looks like <em>in practice</em></h2>
+    <p class="reveal delay-2">Real community members, real results — photographed before starting and after 12 weeks of Anda's collagen nourishment protocol.</p>
+  </div>
+  <div class="ba-grid">
+    <div class="ba-card reveal delay-1">
+      <div class="ba-img ba-before img-shimmer">
+        <div class="ba-label">Before</div>
+      </div>
+      <div class="ba-caption">
+        <h4>Week 0 — Starting point</h4>
+        <p>Reduced elasticity, visible fine lines, dull complexion, under-eye hollowing</p>
+      </div>
+    </div>
+    <div class="ba-card reveal delay-2">
+      <div class="ba-img ba-after img-shimmer">
+        <div class="ba-label">After 12 weeks</div>
+      </div>
+      <div class="ba-caption">
+        <h4>Week 12 — Collagen protocol</h4>
+        <p>Improved plumpness, smoother texture, radiant glow, restored firmness</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="col-cta">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div style="position:relative;z-index:1">
+    <span class="tag reveal">Begin your journey</span>
+    <h2 class="reveal delay-1">Ready to rebuild from <em>the inside out</em>?</h2>
+    <p class="reveal delay-2">Start with your free health assessment. Anda will review your results and create a personalised collagen and cellular nourishment plan just for you.</p>
+    <div class="btn-group reveal delay-3" style="justify-content:center">
+      <a href="assessment.html" class="btn-primary">Start my assessment</a>
+      <a href="community.html" class="btn-outline">Join the community</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
+    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+  </div>
+  <div class="f-col">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="hydration.html">Inner Care</a></li>
+      <li><a href="collagen.html">Collagen</a></li>
+      <li><a href="blog.html">Soul &amp; Craft</a></li>
+      <li><a href="assessment.html">Health Assessment</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html">About Anda</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="#">Newsletter</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Pinterest</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="f-bottom">
+  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>Privacy policy · Terms of use</span>
+</div>
+
+<script src="glow.js"></script>
+</body>
+</html>

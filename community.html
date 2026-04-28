@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Community — Glow Holistic Living</title>
+<link rel="stylesheet" href="glow.css">
+<style>
+/* BENEFITS */
+.benefits-section{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.benefits-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem}
+.benefits-text h2 em{font-style:italic;color:var(--rose)}
+.benefits-text p{font-size:0.92rem;line-height:1.9;opacity:0.65;margin-bottom:2rem}
+.benefit-list{list-style:none;display:flex;flex-direction:column;gap:1rem}
+.benefit-list li{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:var(--light);border-radius:14px;transition:transform 0.2s,box-shadow 0.2s}
+.benefit-list li:hover{transform:translateX(6px);box-shadow:4px 0 20px rgba(58,42,37,0.07)}
+.benefit-list .b-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+.benefit-list .b-text strong{display:block;font-size:0.88rem;font-weight:500;margin-bottom:0.2rem}
+.benefit-list .b-text span{font-size:0.8rem;opacity:0.55;line-height:1.6}
+.benefits-img{border-radius:20px;overflow:hidden;position:relative}
+.benefits-img-inner{min-height:580px;background:linear-gradient(150deg,rgba(138,158,140,.3),rgba(74,106,76,.3)),url('https://picsum.photos/seed/community1/700/900')center/cover no-repeat}
+.benefits-img-float{position:absolute;bottom:2rem;left:2rem;background:rgba(250,247,242,0.93);backdrop-filter:blur(8px);padding:1.25rem 1.5rem;border-radius:16px}
+.benefits-img-float strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose);line-height:1}
+.benefits-img-float span{font-size:0.75rem;opacity:0.55;margin-top:0.2rem;display:block}
+
+/* PROGRAMMES */
+.programmes{background:var(--light);padding:7rem 3.5rem}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
+.prog-card{background:var(--cream);border-radius:22px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;position:relative}
+.prog-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(58,42,37,0.12)}
+.prog-card.featured-prog{background:var(--deep);color:var(--cream)}
+.prog-img{height:200px;position:relative}
+.pr-1{background:linear-gradient(150deg,rgba(232,196,184,.4),rgba(196,130,107,.5)),url('https://picsum.photos/seed/prog1disc/600/400')center/cover}
+.pr-2{background:linear-gradient(150deg,rgba(138,158,140,.4),rgba(74,122,92,.5)),url('https://picsum.photos/seed/prog2glow/600/400')center/cover}
+.pr-3{background:linear-gradient(150deg,rgba(58,42,37,.5),rgba(106,64,53,.5)),url('https://picsum.photos/seed/prog3trans/600/400')center/cover}
+.prog-popular{position:absolute;top:1rem;right:1rem;background:var(--gold);color:var(--deep);font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.75rem;border-radius:2rem}
+.prog-body{padding:2rem}
+.prog-body .prog-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:0.5rem}
+.prog-body .prog-sub{font-size:0.8rem;opacity:0.55;margin-bottom:1.25rem;line-height:1.6}
+.prog-card.featured-prog .prog-sub{opacity:0.5;color:var(--cream)}
+.prog-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.75rem}
+.prog-features li{font-size:0.79rem;display:flex;gap:0.5rem;align-items:center;opacity:0.7}
+.prog-features li::before{content:'✓';color:var(--rose);font-weight:700;flex-shrink:0}
+.prog-card.featured-prog .prog-features li{opacity:0.65;color:var(--cream)}
+.prog-card.featured-prog .prog-features li::before{color:var(--blush)}
+.prog-price{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose);line-height:1;margin-bottom:0.25rem}
+.prog-card.featured-prog .prog-price{color:var(--blush)}
+.prog-price-note{font-size:0.72rem;opacity:0.45;margin-bottom:1.5rem}
+
+/* GALLERY */
+.gallery-section{padding:7rem 3.5rem}
+.gallery-masonry{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto;gap:1rem;margin-top:3.5rem}
+.g-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer}
+.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease}
+.g-item:hover img{transform:scale(1.06)}
+.g-item:nth-child(1){grid-row:span 2}
+.g-item:nth-child(4){grid-row:span 2}
+.g-item-bg{width:100%;height:100%;min-height:200px;background-size:cover;background-position:center;transition:transform 0.5s ease}
+.g-item:hover .g-item-bg{transform:scale(1.06)}
+.gb-1{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev1glow/400/600')center/cover;min-height:400px}
+.gb-2{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev2group/400/300')center/cover}
+.gb-3{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev3workshop/400/300')center/cover}
+.gb-4{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev4retreat/400/600')center/cover;min-height:400px}
+.gb-5{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev5yoga/400/300')center/cover}
+.gb-6{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev6food/400/300')center/cover}
+.gb-7{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev7meditate/400/300')center/cover}
+.gb-8{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev8circle/400/300')center/cover}
+.g-overlay{position:absolute;inset:0;background:rgba(58,42,37,0);display:flex;align-items:flex-end;padding:1rem;transition:background 0.3s}
+.g-item:hover .g-overlay{background:rgba(58,42,37,0.3)}
+.g-label{color:white;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s}
+.g-item:hover .g-label{opacity:1}
+
+/* SOCIAL PROOF */
+.social-proof{background:var(--sage-light);padding:6rem 3.5rem;text-align:center}
+.proof-numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin:3.5rem 0}
+.proof-num{text-align:center}
+.proof-num strong{display:block;font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--rose);line-height:1;margin-bottom:0.4rem}
+.proof-num span{font-size:0.78rem;opacity:0.55;letter-spacing:0.06em}
+
+/* BOOK CTA */
+.book-cta{background:var(--deep);padding:7rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.book-cta .tag{color:var(--blush)}
+.book-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--cream);margin-bottom:1.25rem;max-width:760px;margin-left:auto;margin-right:auto}
+.book-cta h2 em{font-style:italic;color:var(--blush)}
+.book-cta p{font-size:0.92rem;line-height:1.85;opacity:0.5;color:var(--cream);max-width:480px;margin:0 auto 3rem}
+.cta-blob-1{position:absolute;width:400px;height:400px;background:rgba(196,130,107,0.1);border-radius:50%;filter:blur(80px);top:-100px;left:-100px;pointer-events:none}
+.cta-blob-2{position:absolute;width:300px;height:300px;background:rgba(138,158,140,0.1);border-radius:50%;filter:blur(80px);bottom:-80px;right:-80px;pointer-events:none}
+.cta-content{position:relative;z-index:1}
+.book-note{font-size:0.78rem;opacity:0.35;color:var(--cream);margin-top:1.5rem}
+
+@media(max-width:900px){
+  .prog-grid{grid-template-columns:1fr 1fr}
+  .gallery-masonry{grid-template-columns:repeat(2,1fr)}
+  .g-item:nth-child(1),.g-item:nth-child(4){grid-row:span 1}
+  .gb-1,.gb-4{min-height:240px}
+  .proof-numbers{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .benefits-section{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem}
+  .programmes{padding:4rem 1.5rem}
+  .prog-grid{grid-template-columns:1fr}
+  .gallery-section{padding:4rem 1.5rem}
+  .social-proof{padding:4rem 1.5rem}
+  .book-cta{padding:5rem 1.5rem}
+}
+@media(max-width:480px){
+  .gallery-masonry{grid-template-columns:1fr 1fr}
+  .proof-numbers{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="hydration.html">Inner Care</a></li>
+    <li><a href="collagen.html">Collagen</a></li>
+    <li><a href="blog.html">Soul &amp; Craft</a></li>
+    <li class="nav-more">
+      <a href="#" class="nav-more-trigger">More &#9662;</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About Me</a>
+        <a href="community.html" class="nav-active">Join the Community</a>
+        <a href="assessment.html">Health Assessment</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <span class="eyebrow reveal">A space to belong</span>
+  <h1 class="reveal delay-1">You don't have to do this <em>alone</em></h1>
+  <p class="sub reveal delay-2">The Glow community is a warm, knowledgeable, and deeply supportive space for women committed to living and feeling better — from the inside out.</p>
+  <div class="btn-group reveal delay-3" style="justify-content:center">
+    <a href="#book" class="btn-primary">Book a discovery call</a>
+    <a href="#programmes" class="btn-outline">View programmes</a>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="mdot"></span>Live workshops</span>
+    <span class="marquee-item"><span class="mdot"></span>Group coaching</span>
+    <span class="marquee-item"><span class="mdot"></span>Private community</span>
+    <span class="marquee-item"><span class="mdot"></span>Monthly retreats</span>
+    <span class="marquee-item"><span class="mdot"></span>Recipe library</span>
+    <span class="marquee-item"><span class="mdot"></span>1-to-1 support</span>
+    <span class="marquee-item"><span class="mdot"></span>Live workshops</span>
+    <span class="marquee-item"><span class="mdot"></span>Group coaching</span>
+    <span class="marquee-item"><span class="mdot"></span>Private community</span>
+    <span class="marquee-item"><span class="mdot"></span>Monthly retreats</span>
+    <span class="marquee-item"><span class="mdot"></span>Recipe library</span>
+    <span class="marquee-item"><span class="mdot"></span>1-to-1 support</span>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="benefits-section">
+  <div class="reveal-left">
+    <span class="tag">Why join</span>
+    <h2>Everything you need to <em>truly thrive</em></h2>
+    <p>The Glow community isn't just a programme — it's an ongoing relationship with your health, supported by expert guidance, a network of like-minded women, and tools that actually work.</p>
+    <ul class="benefit-list">
+      <li>
+        <span class="b-icon">🎓</span>
+        <div class="b-text"><strong>Expert-led education</strong><span>Monthly live workshops with Anda and guest practitioners on gut health, hormones, nutrition, and mindset</span></div>
+      </li>
+      <li>
+        <span class="b-icon">👥</span>
+        <div class="b-text"><strong>Private community group</strong><span>A warm, private online space where members share wins, ask questions, and support one another daily</span></div>
+      </li>
+      <li>
+        <span class="b-icon">📋</span>
+        <div class="b-text"><strong>Personalised protocols</strong><span>Tailored nutrition and lifestyle plans built around your specific health assessment results and goals</span></div>
+      </li>
+      <li>
+        <span class="b-icon">🌿</span>
+        <div class="b-text"><strong>Recipe &amp; ritual library</strong><span>100+ anti-inflammatory recipes, morning rituals, and seasonal wellness guides — all in one place</span></div>
+      </li>
+      <li>
+        <span class="b-icon">💬</span>
+        <div class="b-text"><strong>Direct access to Anda</strong><span>Monthly group Q&amp;A calls and the ability to submit questions between sessions for personalised guidance</span></div>
+      </li>
+    </ul>
+  </div>
+  <div class="benefits-img reveal-right">
+    <div class="benefits-img-inner img-shimmer">
+      <div class="benefits-img-float"><strong>500+</strong><span>women transformed since 2021</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMMES -->
+<section class="programmes" id="programmes">
+  <div class="section-header">
+    <span class="tag reveal">Choose your path</span>
+    <h2 class="reveal delay-1">Three ways to work <em>with Anda</em></h2>
+    <p class="reveal delay-2">Whether you're just beginning or ready for deep transformation, there's a programme designed for exactly where you are right now.</p>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-card reveal delay-1">
+      <div class="prog-img pr-1 img-shimmer"></div>
+      <div class="prog-body">
+        <div class="prog-name">Discovery Call</div>
+        <div class="prog-sub">A free, 30-minute conversation to explore your health challenges and find the right next step for you.</div>
+        <ul class="prog-features">
+          <li>30-minute video call with Anda</li>
+          <li>No commitment required</li>
+          <li>Personalised programme recommendation</li>
+          <li>Follow-up resource email</li>
+        </ul>
+        <div class="prog-price">Free</div>
+        <div class="prog-price-note">No strings attached</div>
+        <a href="#book" class="btn-outline" style="width:100%;text-align:center;display:block">Book your call</a>
+      </div>
+    </div>
+    <div class="prog-card featured-prog reveal delay-2">
+      <div class="prog-img pr-2 img-shimmer"><div class="prog-popular">Most popular</div></div>
+      <div class="prog-body">
+        <div class="prog-name" style="color:var(--cream)">Glow Programme</div>
+        <div class="prog-sub">12 weeks of guided transformation — gut health, collagen, hydration, and mindset working together.</div>
+        <ul class="prog-features">
+          <li>Full health assessment &amp; protocol</li>
+          <li>Weekly group coaching calls</li>
+          <li>Private community access</li>
+          <li>Recipe &amp; ritual library</li>
+          <li>Monthly 1-to-1 check-in</li>
+        </ul>
+        <div class="prog-price">€297</div>
+        <div class="prog-price-note" style="color:var(--cream)">per month · 3-month commitment</div>
+        <a href="#book" class="btn-rose" style="width:100%;text-align:center;display:block">Join the programme</a>
+      </div>
+    </div>
+    <div class="prog-card reveal delay-3">
+      <div class="prog-img pr-3 img-shimmer"></div>
+      <div class="prog-body">
+        <div class="prog-name">1-to-1 Mentorship</div>
+        <div class="prog-sub">Deep, personalised support for women who want dedicated one-on-one guidance alongside their community access.</div>
+        <ul class="prog-features">
+          <li>Bi-weekly 1-to-1 sessions with Anda</li>
+          <li>Full lab review &amp; interpretation</li>
+          <li>Bespoke supplement protocol</li>
+          <li>All Glow Programme benefits</li>
+          <li>Unlimited WhatsApp support</li>
+        </ul>
+        <div class="prog-price">€597</div>
+        <div class="prog-price-note">per month · 3-month minimum</div>
+        <a href="#book" class="btn-primary" style="width:100%;text-align:center;display:block">Apply now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section class="gallery-section">
+  <div class="section-header">
+    <span class="tag reveal">Life inside the community</span>
+    <h2 class="reveal delay-1">Real moments, <em>real connections</em></h2>
+    <p class="reveal delay-2">From online workshops to in-person retreats, the Glow community gathers to learn, share, and grow together.</p>
+  </div>
+  <div class="gallery-masonry reveal-scale">
+    <div class="g-item"><div class="g-item-bg gb-1"></div><div class="g-overlay"><span class="g-label">Seasonal retreat</span></div></div>
+    <div class="g-item"><div class="g-item-bg gb-2"></div><div class="g-overlay"><span class="g-label">Group workshop</span></div></div>
+    <div class="g-item"><div class="g-item-bg gb-3"></div><div class="g-overlay"><span class="g-label">Cooking class</span></div></div>
+    <div class="g-item"><div class="g-item-bg gb-4"></div><div class="g-overlay"><span class="g-label">Wellness circle</span></div></div>
+    <div class="g-item"><div class="g-item-bg gb-5"></div><div class="g-overlay"><span class="g-label">Morning movement</span></div></div>
+    <div class="g-item"><div class="g-item-bg gb-6"></div><div class="g-overlay"><span class="g-label">Nourishing food</span></div></div>
+    <div class="g-item"><div class="g-item-bg gb-7"></div><div class="g-overlay"><span class="g-label">Breathwork session</span></div></div>
+    <div class="g-item"><div class="g-item-bg gb-8"></div><div class="g-overlay"><span class="g-label">Community gathering</span></div></div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF NUMBERS -->
+<section class="social-proof">
+  <div class="section-header">
+    <span class="tag reveal">The results speak</span>
+    <h2 class="reveal delay-1">A community built on <em>real transformation</em></h2>
+  </div>
+  <div class="proof-numbers">
+    <div class="proof-num reveal delay-1"><strong>500+</strong><span>women in the community</span></div>
+    <div class="proof-num reveal delay-2"><strong>94%</strong><span>report improved energy within 6 weeks</span></div>
+    <div class="proof-num reveal delay-3"><strong>87%</strong><span>experience visible skin improvements</span></div>
+    <div class="proof-num reveal delay-4"><strong>4.9★</strong><span>average programme rating</span></div>
+  </div>
+  <p class="reveal" style="font-size:0.82rem;opacity:0.5;max-width:480px;margin:0 auto">Based on post-programme surveys completed by members who joined between 2022–2025.</p>
+</section>
+
+<!-- BOOK A DISCOVERY CALL -->
+<section class="book-cta" id="book">
+  <div class="cta-blob-1"></div>
+  <div class="cta-blob-2"></div>
+  <div class="cta-content">
+    <span class="tag reveal">Your first step</span>
+    <h2 class="reveal delay-1">Book your free <em>discovery call</em></h2>
+    <p class="reveal delay-2">30 minutes. No pressure. Just an honest conversation about where you are, where you want to be, and whether Glow is the right fit for you right now.</p>
+    <div class="btn-group reveal delay-3" style="justify-content:center">
+      <a href="contact.html" class="btn-rose" style="font-size:0.85rem;padding:1.1rem 2.8rem">Book your discovery call</a>
+      <a href="assessment.html" class="btn-outline" style="border-color:rgba(232,196,184,0.3);color:var(--cream)">Take the health assessment first</a>
+    </div>
+    <p class="book-note reveal delay-4">Discovery calls are offered free of charge with no obligation to join a programme.</p>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
+    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+  </div>
+  <div class="f-col">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="hydration.html">Inner Care</a></li>
+      <li><a href="collagen.html">Collagen</a></li>
+      <li><a href="blog.html">Soul &amp; Craft</a></li>
+      <li><a href="assessment.html">Health Assessment</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html">About Anda</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="#">Newsletter</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Pinterest</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="f-bottom">
+  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>Privacy policy · Terms of use</span>
+</div>
+
+<script src="glow.js"></script>
+<script>
+// Counter animation for proof numbers
+function countUp(el, target, suffix) {
+  const dur = 1800, start = performance.now();
+  (function update(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = (suffix === '★' ? (eased * target).toFixed(1) : Math.floor(eased * target)) + suffix;
+    if (p < 1) requestAnimationFrame(update);
+    else el.textContent = target + suffix;
+  })(start);
+}
+const cObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const text = el.textContent;
+    if (text.includes('+')) countUp(el, parseInt(text), '+');
+    else if (text.includes('%')) countUp(el, parseInt(text), '%');
+    else if (text.includes('★')) countUp(el, 4.9, '★');
+    cObserver.unobserve(el);
+  });
+}, { threshold: 0.7 });
+document.querySelectorAll('.proof-num strong').forEach(el => cObserver.observe(el));
+</script>
+</body>
+</html>
