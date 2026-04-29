@@ -150,21 +150,27 @@ textarea.form-control{resize:vertical;min-height:120px}
   }
   nav ul.mobile-open{display:flex}
   nav ul li{border-top:0.5px solid rgba(30,58,95,0.06)}
-  nav ul a{padding:0.85rem 1.5rem;display:block;opacity:0.75;font-size:0.8rem}
+  nav ul a{padding:0.9rem 1.5rem;display:block;opacity:0.75;font-size:0.8rem}
   .nav-toggle{display:flex}
   .nav-more .nav-dropdown{position:static;border:none;box-shadow:none;background:rgba(30,58,95,0.04);border-radius:0;padding:0;display:none}
   .nav-more.open .nav-dropdown{display:flex}
-  .nav-dropdown a{padding:0.75rem 2.5rem}
-  .page-hero{padding:4rem 1.5rem 3rem}
+  .nav-dropdown a{padding:0.8rem 2.5rem;font-size:0.78rem}
+  .page-hero{padding:3.5rem 1.5rem 2.5rem}
+  .page-hero h1{font-size:clamp(2.4rem,7vw,4.5rem)}
   .f-bottom{padding:1rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center}
   .form-row{grid-template-columns:1fr}
+  .btn-group{flex-direction:column;gap:0.75rem;align-items:stretch}
+  .btn-primary,.btn-outline,.btn-rose{text-align:center;width:100%;box-sizing:border-box}
 }
 @media(max-width:480px){
   footer{grid-template-columns:1fr;padding:2.5rem 1.2rem}
   .f-bottom{padding:1rem 1.2rem}
-  .btn-group{flex-direction:column}
   nav{padding:0.9rem 1.2rem}
-  .page-hero{padding:3rem 1.2rem 2.5rem}
+  .page-hero{padding:2.5rem 1.2rem 2rem}
+  .page-hero h1{font-size:clamp(2rem,8.5vw,3rem)}
+  .page-hero .sub{font-size:0.88rem}
   .section-header{margin-bottom:2.5rem}
   .section-header h2{font-size:clamp(1.9rem,6vw,2.8rem)}
+  .btn-primary,.btn-outline,.btn-rose{font-size:0.72rem;padding:0.8rem 1.4rem;letter-spacing:0.08em}
+  .submit-btn{font-size:0.74rem;letter-spacing:0.09em;padding:1rem}
 }
