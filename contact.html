@@ -365,6 +365,7 @@ footer{background:#14263D;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
 
       <button class="submit-btn" onclick="submitForm(event)">Send message</button>
       <p class="form-note">We respect your privacy and will never share your details.</p>
+      <p id="send-error" style="display:none;font-size:0.73rem;color:#c0392b;text-align:center;margin-top:0.5rem">Something went wrong — please try again or email us directly.</p>
     </div>
 
     <div class="success-msg" id="success-msg">
@@ -479,27 +480,73 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
 });
 
 // Form submit
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
-  const email = document.getElementById('email').value.trim();
+
+  const fname   = document.getElementById('fname').value.trim();
+  const lname   = document.getElementById('lname').value.trim();
+  const email   = document.getElementById('email').value.trim();
   const message = document.getElementById('message').value.trim();
-  if (!email || !message) {
-    const missing = !email ? document.getElementById('email') : document.getElementById('message');
-    missing.style.borderColor = 'var(--rose)';
-    missing.focus();
-    setTimeout(() => missing.style.borderColor = '', 2000);
-    return;
+  const topic   = document.querySelector('.topic-btn.active')?.textContent || 'Not selected';
+
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+
+  // Highlight missing fields
+  const fields = [
+    { el: document.getElementById('fname'),   ok: !!fname },
+    { el: document.getElementById('lname'),   ok: !!lname },
+    { el: document.getElementById('email'),   ok: emailOk },
+    { el: document.getElementById('message'), ok: !!message },
+  ];
+  let firstBad = null;
+  fields.forEach(({ el, ok }) => {
+    el.style.borderColor = ok ? '' : '#c0392b';
+    if (!ok && !firstBad) firstBad = el;
+  });
+  if (!emailOk && email) {
+    document.getElementById('email').style.borderColor = '#c0392b';
+    if (!firstBad) firstBad = document.getElementById('email');
   }
-  document.getElementById('contact-form').style.opacity = '0';
-  document.getElementById('contact-form').style.transition = 'opacity 0.4s';
-  setTimeout(() => {
-    document.getElementById('contact-form').style.display = 'none';
-    const s = document.getElementById('success-msg');
-    s.style.display = 'block';
-    s.style.opacity = '0';
-    s.style.transition = 'opacity 0.4s';
-    setTimeout(() => s.style.opacity = '1', 50);
-  }, 400);
+  if (firstBad) { firstBad.focus(); return; }
+
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/xqewrnkj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New message from Harmony Living contact form',
+        topic,
+        name: fname + ' ' + lname,
+        email,
+        message,
+      }),
+    });
+
+    if (res.ok) {
+      const form = document.getElementById('contact-form');
+      form.style.transition = 'opacity 0.4s';
+      form.style.opacity = '0';
+      setTimeout(() => {
+        form.style.display = 'none';
+        const s = document.getElementById('success-msg');
+        s.style.display = 'block';
+        s.style.opacity = '0';
+        s.style.transition = 'opacity 0.4s';
+        setTimeout(() => s.style.opacity = '1', 50);
+      }, 400);
+    } else {
+      throw new Error('Server error');
+    }
+  } catch {
+    btn.textContent = 'Send message';
+    btn.disabled = false;
+    const errNote = document.getElementById('send-error');
+    if (errNote) { errNote.style.display = 'block'; setTimeout(() => errNote.style.display = 'none', 4000); }
+  }
 }
 </script>
 </body>
