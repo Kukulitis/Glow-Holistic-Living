@@ -45,7 +45,7 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
 
 /* PAGE HERO */
 .page-hero{
-  padding:1.5rem 3.5rem 2rem;
+  padding:88px 56px 80px;
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -67,6 +67,7 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
 @keyframes float1{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.04)}}
 @keyframes float2{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(20px) scale(0.97)}}
 .page-hero > *{position:relative;z-index:1}
+.page-hero > .blob{position:absolute;z-index:0}
 
 /* CONTACT LAYOUT */
 .contact-section{
@@ -209,11 +210,21 @@ footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
   .nav-more .nav-dropdown{position:static;border:none;box-shadow:none;background:rgba(58,42,37,0.04);border-radius:0;padding:0;display:none}
   .nav-more.open .nav-dropdown{display:flex}
   .nav-dropdown a{padding:0.75rem 2.5rem}
+  .page-hero{padding:4rem 1.5rem 3rem}
   .contact-section{grid-template-columns:1fr;gap:3rem;padding:3rem 1.5rem 5rem}
+  .contact-form-wrap{padding:2rem 1.5rem}
+  .topic-grid{grid-template-columns:1fr 1fr}
   footer{grid-template-columns:1fr 1fr;gap:2rem;padding:3rem 1.5rem}
   .f-bottom{padding:1rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center}
 }
-@media(max-width:480px){footer{grid-template-columns:1fr}}
+@media(max-width:480px){
+  .page-hero{padding:3rem 1.2rem 2.5rem}
+  .contact-form-wrap{padding:1.5rem 1.25rem}
+  .form-row{grid-template-columns:1fr}
+  .topic-grid{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr}
+  .f-bottom{padding:1rem 1.2rem}
+}
 </style>
 </head>
 <body>
@@ -242,9 +253,9 @@ footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
 <section class="page-hero">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
-  <span class="tag reveal">Say hello</span>
-  <h1 class="reveal delay-1">We'd love to hear <em>from you</em></h1>
-  <p class="reveal delay-2">Whether you have a question, a collaboration idea, or just want to talk beauty — our inbox is always open.</p>
+  <span class="tag">Say hello</span>
+  <h1>We'd love to hear <em>from you</em></h1>
+  <p>Whether you have a question, a collaboration idea, or just want to talk beauty — our inbox is always open.</p>
 </section>
 
 <!-- MARQUEE DIVIDER -->
