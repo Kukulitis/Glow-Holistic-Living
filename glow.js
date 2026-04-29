@@ -1,4 +1,22 @@
-/* glow.js — Shared scripts · Glow Holistic Living */
+/* glow.js — Shared scripts · Harmony Living */
+
+// Page transition overlay
+const overlay = document.createElement('div');
+overlay.style.cssText = 'position:fixed;inset:0;background:#F4F8FC;z-index:99999;opacity:1;transition:opacity 0.38s ease;pointer-events:none';
+document.body.appendChild(overlay);
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+  requestAnimationFrame(() => { overlay.style.opacity = '0'; });
+});
+
+document.addEventListener('click', e => {
+  const link = e.target.closest('a[href]');
+  if (!link) return;
+  const href = link.getAttribute('href');
+  if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || link.target === '_blank') return;
+  e.preventDefault();
+  overlay.style.opacity = '1';
+  setTimeout(() => { window.location.href = href; }, 400);
+});
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {

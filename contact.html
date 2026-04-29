@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get in touch — Glow</title>
+<title>Get in touch — Harmony</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#FAF7F2;--blush:#E8C4B8;--rose:#C4826B;--deep:#3A2A25;
-  --sage:#8A9E8C;--gold:#C9A96E;--light:#F3EDE6;--sage-light:#EBF0EB;
+  --cream:#F4F8FC;--blush:#B8D4E8;--rose:#4A7FB5;--deep:#1E3A5F;
+  --sage:#6B9BB8;--gold:#82BAD4;--light:#E8F2F9;--sage-light:#E2EEF8;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);overflow-x:hidden}
@@ -28,11 +29,11 @@ nav{
   display:flex;justify-content:space-between;align-items:center;
   padding:1.4rem 3.5rem;background:rgba(250,247,242,0.92);
   position:sticky;top:0;z-index:200;
-  border-bottom:0.5px solid rgba(58,42,37,0.1);
+  border-bottom:0.5px solid rgba(30,58,95,0.1);
   backdrop-filter:blur(8px);
   transition:padding 0.35s ease,box-shadow 0.35s ease;
 }
-nav.scrolled{padding-top:0.8rem;padding-bottom:0.8rem;box-shadow:0 4px 24px rgba(58,42,37,0.09)}
+nav.scrolled{padding-top:0.8rem;padding-bottom:0.8rem;box-shadow:0 4px 24px rgba(30,58,95,0.09)}
 .logo{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;letter-spacing:0.08em;text-decoration:none;color:var(--deep)}
 .logo em{font-style:italic;color:var(--rose)}
 nav ul{list-style:none;display:flex;gap:2.5rem}
@@ -62,8 +63,8 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
 
 /* Decorative blobs */
 .blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;z-index:0}
-.blob-1{width:350px;height:350px;background:rgba(196,130,107,0.14);top:-100px;right:10%;animation:float1 8s ease-in-out infinite}
-.blob-2{width:250px;height:250px;background:rgba(138,158,140,0.12);bottom:-60px;left:8%;animation:float2 10s ease-in-out infinite}
+.blob-1{width:350px;height:350px;background:rgba(74,127,181,0.14);top:-100px;right:10%;animation:float1 8s ease-in-out infinite}
+.blob-2{width:250px;height:250px;background:rgba(100,155,200,0.12);bottom:-60px;left:8%;animation:float2 10s ease-in-out infinite}
 @keyframes float1{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.04)}}
 @keyframes float2{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(20px) scale(0.97)}}
 .page-hero > *{position:relative;z-index:1}
@@ -85,8 +86,8 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
 .contact-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.5vw,2.5rem);font-weight:300;line-height:1.2;margin-bottom:1rem}
 .contact-info p{font-size:0.9rem;line-height:1.9;opacity:0.6;margin-bottom:3rem}
 
-.info-card{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 0;border-top:0.5px solid rgba(58,42,37,0.1)}
-.info-card:last-of-type{border-bottom:0.5px solid rgba(58,42,37,0.1)}
+.info-card{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 0;border-top:0.5px solid rgba(30,58,95,0.1)}
+.info-card:last-of-type{border-bottom:0.5px solid rgba(30,58,95,0.1)}
 .info-icon{
   width:42px;height:42px;border-radius:50%;
   background:var(--light);display:flex;align-items:center;justify-content:center;
@@ -100,7 +101,7 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
 .social-row{display:flex;gap:0.75rem;margin-top:2.5rem}
 .social-btn{
   width:40px;height:40px;border-radius:50%;
-  border:0.5px solid rgba(58,42,37,0.2);
+  border:0.5px solid rgba(30,58,95,0.2);
   display:flex;align-items:center;justify-content:center;
   font-size:1rem;cursor:pointer;
   transition:background 0.25s,border-color 0.25s,transform 0.25s;
@@ -113,26 +114,26 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
   background:white;
   border-radius:24px;
   padding:3rem;
-  box-shadow:0 8px 40px rgba(58,42,37,0.07);
+  box-shadow:0 8px 40px rgba(30,58,95,0.07);
 }
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem}
 .form-group{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.25rem}
 .form-group label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;font-weight:500}
 .form-control{
-  background:#FAF7F2;border:1px solid rgba(58,42,37,0.12);
+  background:#FAF7F2;border:1px solid rgba(30,58,95,0.12);
   color:var(--deep);font-family:'Jost',sans-serif;font-size:0.88rem;
   padding:0.85rem 1.1rem;border-radius:12px;outline:none;
   transition:border-color 0.25s,box-shadow 0.25s;
   width:100%;
 }
-.form-control:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(196,130,107,0.1)}
+.form-control:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(74,127,181,0.1)}
 .form-control::placeholder{opacity:0.35}
 textarea.form-control{resize:vertical;min-height:140px}
 
 .topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1.5rem}
 .topic-btn{
   padding:0.6rem 0.9rem;border-radius:2rem;
-  border:1px solid rgba(58,42,37,0.15);
+  border:1px solid rgba(30,58,95,0.15);
   background:transparent;font-family:'Jost',sans-serif;
   font-size:0.76rem;letter-spacing:0.05em;cursor:pointer;
   color:var(--deep);opacity:0.65;
@@ -173,7 +174,7 @@ textarea.form-control{resize:vertical;min-height:140px}
 .mdot{width:4px;height:4px;border-radius:50%;background:var(--rose);flex-shrink:0}
 
 /* FOOTER */
-footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem}
+footer{background:#14263D;color:var(--cream);padding:4rem 3.5rem;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem}
 .f-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--cream);margin-bottom:1rem;display:block;text-decoration:none}
 .f-logo em{font-style:italic;color:var(--blush)}
 .f-desc{font-size:0.82rem;line-height:1.8;opacity:0.4}
@@ -181,10 +182,10 @@ footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
 .f-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
 .f-col ul a{text-decoration:none;font-size:0.84rem;color:var(--cream);opacity:0.4;transition:opacity 0.2s}
 .f-col ul a:hover{opacity:0.9}
-.f-bottom{background:#221814;padding:1.25rem 3.5rem;display:flex;justify-content:space-between;font-size:0.74rem;opacity:0.35;color:var(--cream)}
+.f-bottom{background:#0D1E30;padding:1.25rem 3.5rem;display:flex;justify-content:space-between;font-size:0.74rem;opacity:0.35;color:var(--cream)}
 
 /* CURSOR GLOW */
-.cursor-glow{position:fixed;width:480px;height:480px;background:radial-gradient(circle,rgba(196,130,107,0.07) 0%,transparent 70%);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:9999}
+.cursor-glow{position:fixed;width:480px;height:480px;background:radial-gradient(circle,rgba(74,127,181,0.07) 0%,transparent 70%);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:9999}
 
 /* ACTIVE NAV STATE */
 .nav-active{opacity:1!important}
@@ -193,21 +194,21 @@ footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
 /* NAV DROPDOWN */
 .nav-more{position:relative}
 .nav-more-trigger{cursor:pointer;user-select:none}
-.nav-dropdown{display:none;position:absolute;top:calc(100% + 14px);right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(10px);border:0.5px solid rgba(58,42,37,0.1);border-radius:14px;padding:0.5rem 0;min-width:195px;box-shadow:0 12px 40px rgba(58,42,37,0.13);flex-direction:column}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 14px);right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(10px);border:0.5px solid rgba(30,58,95,0.1);border-radius:14px;padding:0.5rem 0;min-width:195px;box-shadow:0 12px 40px rgba(30,58,95,0.13);flex-direction:column}
 .nav-more.open .nav-dropdown{display:flex}
 .nav-dropdown a{padding:0.7rem 1.3rem;font-size:0.73rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--deep);opacity:0.65;transition:opacity 0.2s,background 0.2s;text-decoration:none}
 .nav-dropdown a::after{display:none!important}
-.nav-dropdown a:hover{opacity:1;background:rgba(196,130,107,0.07)}
+.nav-dropdown a:hover{opacity:1;background:rgba(74,127,181,0.07)}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--deep);transition:transform 0.3s,opacity 0.3s}
 @media(max-width:768px){
   nav{padding:1rem 1.5rem}
-  nav ul{display:none;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(58,42,37,0.1);padding:0.5rem 0;align-items:stretch}
+  nav ul{display:none;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(30,58,95,0.1);padding:0.5rem 0;align-items:stretch}
   nav ul.mobile-open{display:flex}
-  nav ul li{border-top:0.5px solid rgba(58,42,37,0.06)}
+  nav ul li{border-top:0.5px solid rgba(30,58,95,0.06)}
   nav ul a{padding:0.85rem 1.5rem;display:block;opacity:0.75}
   .nav-toggle{display:flex}
-  .nav-more .nav-dropdown{position:static;border:none;box-shadow:none;background:rgba(58,42,37,0.04);border-radius:0;padding:0;display:none}
+  .nav-more .nav-dropdown{position:static;border:none;box-shadow:none;background:rgba(30,58,95,0.04);border-radius:0;padding:0;display:none}
   .nav-more.open .nav-dropdown{display:flex}
   .nav-dropdown a{padding:0.75rem 2.5rem}
   .page-hero{padding:4rem 1.5rem 3rem}
@@ -228,9 +229,23 @@ footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
 </style>
 </head>
 <body>
+<script>
+(function(){
+  var ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;background:#F4F8FC;z-index:99999;opacity:1;transition:opacity 0.38s ease;pointer-events:none';
+  document.body.appendChild(ov);
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(function(){requestAnimationFrame(function(){ov.style.opacity='0';});});
+  document.addEventListener('click',function(e){
+    var link=e.target.closest('a[href]');if(!link)return;
+    var href=link.getAttribute('href');
+    if(!href||href.startsWith('#')||href.startsWith('http')||href.startsWith('mailto')||href.startsWith('tel')||link.target==='_blank')return;
+    e.preventDefault();ov.style.opacity='1';setTimeout(function(){window.location.href=href;},400);
+  });
+})();
+</script>
 
 <nav>
-  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <a href="index.html" class="logo">Har<em>mony</em></a>
   <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -357,7 +372,7 @@ footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
       <h3>Message sent!</h3>
       <p>Thank you for reaching out. We'll be in touch within 24 hours.<br>In the meantime, explore our latest guides.</p>
       <br>
-      <a href="health_beauty_informational.html" style="display:inline-block;margin-top:0.5rem;background:var(--deep);color:var(--cream);padding:0.85rem 2rem;border-radius:2rem;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.25s" onmouseover="this.style.background='var(--rose)'" onmouseout="this.style.background='var(--deep)'">Back to Glow →</a>
+      <a href="health_beauty_informational.html" style="display:inline-block;margin-top:0.5rem;background:var(--deep);color:var(--cream);padding:0.85rem 2rem;border-radius:2rem;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.25s" onmouseover="this.style.background='var(--rose)'" onmouseout="this.style.background='var(--deep)'">Back to Harmony →</a>
     </div>
   </div>
 
@@ -365,8 +380,8 @@ footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
 
 <footer>
   <div>
-    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
-    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+    <a href="index.html" class="f-logo">Har<em>mony</em></a>
+    <p class="f-desc">Harmony living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
   </div>
   <div class="f-col">
     <h4>Explore</h4>
@@ -395,7 +410,7 @@ footer{background:#2A1E1A;color:var(--cream);padding:4rem 3.5rem;display:grid;gr
   </div>
 </footer>
 <div class="f-bottom">
-  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>© 2026 Harmony Living. All rights reserved.</span>
   <span>Privacy policy · Terms of use</span>
 </div>
 

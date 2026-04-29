@@ -1,41 +1,42 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Health Assessment — Glow Holistic Living</title>
+<title>Health Assessment — Harmony Living</title>
 <link rel="stylesheet" href="glow.css">
 <style>
 .assessment-wrap{max-width:780px;margin:0 auto;padding:3rem 3.5rem 7rem}
-.progress-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(58,42,37,0.1);overflow:hidden;z-index:1}
+.progress-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(30,58,95,0.1);overflow:hidden;z-index:1}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width 0.5s ease}
-.q-section{margin-bottom:3rem;padding-bottom:3rem;border-bottom:0.5px solid rgba(58,42,37,0.1)}
+.q-section{margin-bottom:3rem;padding-bottom:3rem;border-bottom:0.5px solid rgba(30,58,95,0.1)}
 .q-section:last-of-type{border-bottom:none}
 .q-section-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:0.4rem}
 .q-section-sub{font-size:0.82rem;opacity:0.5;margin-bottom:1.75rem;line-height:1.6}
 .q-label{font-size:0.85rem;font-weight:500;margin-bottom:0.9rem;display:block}
 .scale-row{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap}
-.scale-btn{width:48px;height:48px;border-radius:50%;border:1px solid rgba(58,42,37,0.18);background:transparent;font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;color:var(--deep);transition:all 0.2s;flex-shrink:0}
+.scale-btn{width:48px;height:48px;border-radius:50%;border:1px solid rgba(30,58,95,0.18);background:transparent;font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;color:var(--deep);transition:all 0.2s;flex-shrink:0}
 .scale-btn:hover,.scale-btn.active{background:var(--rose);border-color:var(--rose);color:white}
 .scale-labels{display:flex;justify-content:space-between;font-size:0.68rem;opacity:0.45;margin-top:0.5rem;letter-spacing:0.06em}
 .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem}
-.check-item{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;border:1px solid rgba(58,42,37,0.14);border-radius:12px;cursor:pointer;transition:all 0.2s;user-select:none}
-.check-item:hover{border-color:var(--rose);background:rgba(196,130,107,0.05)}
-.check-item.active{border-color:var(--rose);background:rgba(196,130,107,0.08)}
+.check-item{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;border:1px solid rgba(30,58,95,0.14);border-radius:12px;cursor:pointer;transition:all 0.2s;user-select:none}
+.check-item:hover{border-color:var(--rose);background:rgba(74,127,181,0.05)}
+.check-item.active{border-color:var(--rose);background:rgba(74,127,181,0.08)}
 .check-item input{position:absolute;opacity:0;pointer-events:none}
-.check-box{width:18px;height:18px;border-radius:5px;border:1.5px solid rgba(58,42,37,0.25);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.check-box{width:18px;height:18px;border-radius:5px;border:1.5px solid rgba(30,58,95,0.25);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
 .check-item.active .check-box{background:var(--rose);border-color:var(--rose)}
 .check-item.active .check-box::after{content:'✓';color:white;font-size:0.7rem;font-weight:700}
 .check-text{font-size:0.84rem}
 .radio-list{display:flex;flex-direction:column;gap:0.6rem}
-.radio-item{display:flex;align-items:center;gap:0.75rem;padding:0.8rem 1rem;border:1px solid rgba(58,42,37,0.14);border-radius:12px;cursor:pointer;transition:all 0.2s;user-select:none}
-.radio-item:hover{border-color:var(--rose);background:rgba(196,130,107,0.05)}
-.radio-item.active{border-color:var(--rose);background:rgba(196,130,107,0.08)}
-.radio-dot{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(58,42,37,0.25);flex-shrink:0;transition:all 0.2s;position:relative}
+.radio-item{display:flex;align-items:center;gap:0.75rem;padding:0.8rem 1rem;border:1px solid rgba(30,58,95,0.14);border-radius:12px;cursor:pointer;transition:all 0.2s;user-select:none}
+.radio-item:hover{border-color:var(--rose);background:rgba(74,127,181,0.05)}
+.radio-item.active{border-color:var(--rose);background:rgba(74,127,181,0.08)}
+.radio-dot{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(30,58,95,0.25);flex-shrink:0;transition:all 0.2s;position:relative}
 .radio-item.active .radio-dot{border-color:var(--rose);background:var(--rose)}
 .radio-item.active .radio-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:white;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
 .radio-text{font-size:0.84rem}
-.form-wrap{background:white;border-radius:20px;padding:2.5rem;box-shadow:0 8px 40px rgba(58,42,37,0.07);margin-bottom:2rem}
+.form-wrap{background:white;border-radius:20px;padding:2.5rem;box-shadow:0 8px 40px rgba(30,58,95,0.07);margin-bottom:2rem}
 .submit-area{text-align:center;padding-top:1rem}
 .submit-area .submit-btn{max-width:320px;margin:0 auto}
 .form-note{font-size:0.72rem;opacity:0.4;text-align:center;margin-top:0.9rem}
@@ -60,7 +61,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <a href="index.html" class="logo">Har<em>mony</em></a>
   <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -230,15 +231,15 @@
     <span class="success-icon">🌿</span>
     <h2>Assessment received!</h2>
     <p>Thank you for taking the time to share how you're feeling. Anda will review your responses and send your personalised wellness summary within 48 hours.</p>
-    <a href="index.html" class="btn-primary">Back to Glow →</a>
+    <a href="index.html" class="btn-primary">Back to Harmony →</a>
   </div>
 
 </div>
 
 <footer>
   <div>
-    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
-    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+    <a href="index.html" class="f-logo">Har<em>mony</em></a>
+    <p class="f-desc">Harmony living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
   </div>
   <div class="f-col">
     <h4>Explore</h4>
@@ -267,7 +268,7 @@
   </div>
 </footer>
 <div class="f-bottom">
-  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>© 2026 Harmony Living. All rights reserved.</span>
   <span>Privacy policy · Terms of use</span>
 </div>
 
@@ -296,7 +297,10 @@ function toggleCheck(item) {
 }
 function updateProgress() {
   const total = 7;
-  const filled = Object.keys(answers).length + (document.querySelectorAll('.check-item.active').length > 0 ? 1 : 0);
+  let filled = Object.keys(answers).length;
+  if (document.querySelector('#digestion-checks .check-item.active')) filled++;
+  if (document.querySelector('#skin-checks .check-item.active')) filled++;
+  if (document.querySelector('#goals-checks .check-item.active')) filled++;
   document.getElementById('progress').style.width = Math.min(Math.round((filled / total) * 90), 90) + '%';
 }
 
@@ -306,7 +310,7 @@ function findSection(keyword) {
 }
 function showFieldError(el, msg) {
   el.style.borderColor = 'var(--rose)';
-  el.style.boxShadow = '0 0 0 3px rgba(196,130,107,0.15)';
+  el.style.boxShadow = '0 0 0 3px rgba(74,127,181,0.15)';
   let err = el.parentNode.querySelector('.field-error');
   if (!err) {
     err = document.createElement('span');

@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Collagen & Cellular Nourishment — Glow Holistic Living</title>
+<title>Collagen & Cellular Nourishment — Harmony Living</title>
 <link rel="stylesheet" href="glow.css">
 <style>
 /* INTRO SPLIT */
@@ -12,7 +13,7 @@
 .col-intro-text h2 em{font-style:italic;color:var(--rose)}
 .col-intro-text p{font-size:0.92rem;line-height:1.9;opacity:0.65;margin-bottom:1rem}
 .col-intro-img{border-radius:20px;overflow:hidden}
-.col-intro-img-inner{min-height:500px;background:linear-gradient(150deg,rgba(232,196,184,.35),rgba(196,130,107,.35)),url('https://picsum.photos/seed/collagen1/700/900')center/cover no-repeat;position:relative}
+.col-intro-img-inner{min-height:500px;background:linear-gradient(150deg,rgba(184,212,240,.35),rgba(74,127,181,.35)),url('https://picsum.photos/seed/collagen1/700/900')center/cover no-repeat;position:relative}
 .col-badge{position:absolute;top:1.5rem;right:1.5rem;background:rgba(250,247,242,0.92);backdrop-filter:blur(6px);padding:1rem 1.2rem;border-radius:14px;text-align:center}
 .col-badge strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--rose);line-height:1}
 .col-badge span{font-size:0.68rem;letter-spacing:0.08em;opacity:0.55}
@@ -21,7 +22,7 @@
 .benefits{background:var(--light);padding:7rem 3.5rem}
 .benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3.5rem}
 .benefit-card{background:var(--cream);border-radius:20px;padding:2.5rem;display:flex;gap:1.5rem;align-items:flex-start;transition:transform 0.25s,box-shadow 0.25s}
-.benefit-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(58,42,37,0.09)}
+.benefit-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(30,58,95,0.09)}
 .benefit-icon{font-size:2rem;flex-shrink:0;width:56px;height:56px;border-radius:16px;background:var(--light);display:flex;align-items:center;justify-content:center}
 .benefit-body h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.5rem}
 .benefit-body p{font-size:0.83rem;line-height:1.8;opacity:0.6}
@@ -29,10 +30,10 @@
 /* FOOD SOURCES */
 .sources{padding:7rem 3.5rem;display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:center}
 .sources-img{border-radius:20px;overflow:hidden}
-.sources-img-inner{min-height:460px;background:linear-gradient(150deg,rgba(201,184,154,.35),rgba(138,112,80,.35)),url('https://picsum.photos/seed/foodcollagen/700/800')center/cover no-repeat}
+.sources-img-inner{min-height:460px;background:linear-gradient(150deg,rgba(154,196,220,.35),rgba(80,130,180,.35)),url('https://picsum.photos/seed/foodcollagen/700/800')center/cover no-repeat}
 .sources-list{list-style:none;display:flex;flex-direction:column;gap:0}
-.source-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:0.5px solid rgba(58,42,37,0.1)}
-.source-item:first-child{border-top:0.5px solid rgba(58,42,37,0.1)}
+.source-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:0.5px solid rgba(30,58,95,0.1)}
+.source-item:first-child{border-top:0.5px solid rgba(30,58,95,0.1)}
 .source-dot{width:8px;height:8px;border-radius:50%;background:var(--rose);flex-shrink:0}
 .source-name{font-weight:500;font-size:0.9rem;flex:1}
 .source-note{font-size:0.78rem;opacity:0.5}
@@ -41,7 +42,7 @@
 .testimonials{background:var(--deep);padding:7rem 3.5rem;color:var(--cream)}
 .testimonials .tag{color:var(--blush)}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
-.testi-card{background:rgba(255,255,255,0.05);border:0.5px solid rgba(232,196,184,0.15);border-radius:20px;padding:2rem;display:flex;flex-direction:column;gap:1.25rem}
+.testi-card{background:rgba(255,255,255,0.05);border:0.5px solid rgba(184,212,240,0.15);border-radius:20px;padding:2rem;display:flex;flex-direction:column;gap:1.25rem}
 .testi-quote{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;line-height:1.6;color:var(--cream);font-style:italic}
 .testi-stars{color:var(--gold);font-size:0.85rem;letter-spacing:0.1em}
 .testi-person{display:flex;align-items:center;gap:0.9rem;margin-top:auto}
@@ -55,8 +56,8 @@
 .ba-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem;margin-top:3.5rem;max-width:900px;margin-left:auto;margin-right:auto}
 .ba-card{border-radius:20px;overflow:hidden;position:relative}
 .ba-img{min-height:380px;position:relative}
-.ba-before{background:linear-gradient(160deg,rgba(180,160,155,.5),rgba(130,110,105,.5)),url('https://picsum.photos/seed/skinbefore/600/700')center/cover no-repeat}
-.ba-after{background:linear-gradient(160deg,rgba(196,130,107,.4),rgba(232,196,184,.4)),url('https://picsum.photos/seed/skinafter/600/700')center/cover no-repeat}
+.ba-before{background:linear-gradient(160deg,rgba(155,185,215,.5),rgba(105,145,185,.5)),url('https://picsum.photos/seed/skinbefore/600/700')center/cover no-repeat}
+.ba-after{background:linear-gradient(160deg,rgba(74,127,181,.4),rgba(184,212,240,.4)),url('https://picsum.photos/seed/skinafter/600/700')center/cover no-repeat}
 .ba-label{position:absolute;top:1.2rem;left:1.2rem;background:rgba(250,247,242,0.92);backdrop-filter:blur(4px);font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.85rem;border-radius:2rem;color:var(--deep)}
 .ba-caption{background:var(--light);padding:1.5rem;text-align:center}
 .ba-caption h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;margin-bottom:0.3rem}
@@ -95,7 +96,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <a href="index.html" class="logo">Har<em>mony</em></a>
   <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -221,7 +222,7 @@
   <div style="max-width:1100px;margin:0 auto">
     <div class="section-header" style="text-align:left;margin-bottom:0">
       <span class="tag reveal">Real results</span>
-      <h2 class="reveal delay-1" style="color:var(--cream)">Voices from the <em style="color:var(--blush)">Glow community</em></h2>
+      <h2 class="reveal delay-1" style="color:var(--cream)">Voices from the <em style="color:var(--blush)">Harmony community</em></h2>
     </div>
     <div class="testi-grid" style="margin-top:3rem">
       <div class="testi-card reveal delay-1">
@@ -298,8 +299,8 @@
 
 <footer>
   <div>
-    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
-    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+    <a href="index.html" class="f-logo">Har<em>mony</em></a>
+    <p class="f-desc">Harmony living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
   </div>
   <div class="f-col">
     <h4>Explore</h4>
@@ -328,7 +329,7 @@
   </div>
 </footer>
 <div class="f-bottom">
-  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>© 2026 Harmony Living. All rights reserved.</span>
   <span>Privacy policy · Terms of use</span>
 </div>
 

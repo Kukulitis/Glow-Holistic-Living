@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Join the Community — Glow Holistic Living</title>
+<title>Join the Community — Harmony Living</title>
 <link rel="stylesheet" href="glow.css">
 <style>
 /* BENEFITS */
@@ -13,12 +14,12 @@
 .benefits-text p{font-size:0.92rem;line-height:1.9;opacity:0.65;margin-bottom:2rem}
 .benefit-list{list-style:none;display:flex;flex-direction:column;gap:1rem}
 .benefit-list li{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:var(--light);border-radius:14px;transition:transform 0.2s,box-shadow 0.2s}
-.benefit-list li:hover{transform:translateX(6px);box-shadow:4px 0 20px rgba(58,42,37,0.07)}
+.benefit-list li:hover{transform:translateX(6px);box-shadow:4px 0 20px rgba(30,58,95,0.07)}
 .benefit-list .b-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
 .benefit-list .b-text strong{display:block;font-size:0.88rem;font-weight:500;margin-bottom:0.2rem}
 .benefit-list .b-text span{font-size:0.8rem;opacity:0.55;line-height:1.6}
 .benefits-img{border-radius:20px;overflow:hidden;position:relative}
-.benefits-img-inner{min-height:580px;background:linear-gradient(150deg,rgba(138,158,140,.3),rgba(74,106,76,.3)),url('https://picsum.photos/seed/community1/700/900')center/cover no-repeat}
+.benefits-img-inner{min-height:580px;background:linear-gradient(150deg,rgba(100,155,200,.3),rgba(74,106,168,.3)),url('https://picsum.photos/seed/community1/700/900')center/cover no-repeat}
 .benefits-img-float{position:absolute;bottom:2rem;left:2rem;background:rgba(250,247,242,0.93);backdrop-filter:blur(8px);padding:1.25rem 1.5rem;border-radius:16px}
 .benefits-img-float strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose);line-height:1}
 .benefits-img-float span{font-size:0.75rem;opacity:0.55;margin-top:0.2rem;display:block}
@@ -27,12 +28,12 @@
 .programmes{background:var(--light);padding:7rem 3.5rem}
 .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
 .prog-card{background:var(--cream);border-radius:22px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s;position:relative}
-.prog-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(58,42,37,0.12)}
+.prog-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(30,58,95,0.12)}
 .prog-card.featured-prog{background:var(--deep);color:var(--cream)}
 .prog-img{height:200px;position:relative}
-.pr-1{background:linear-gradient(150deg,rgba(232,196,184,.4),rgba(196,130,107,.5)),url('https://picsum.photos/seed/prog1disc/600/400')center/cover}
-.pr-2{background:linear-gradient(150deg,rgba(138,158,140,.4),rgba(74,122,92,.5)),url('https://picsum.photos/seed/prog2glow/600/400')center/cover}
-.pr-3{background:linear-gradient(150deg,rgba(58,42,37,.5),rgba(106,64,53,.5)),url('https://picsum.photos/seed/prog3trans/600/400')center/cover}
+.pr-1{background:linear-gradient(150deg,rgba(184,212,240,.4),rgba(74,127,181,.5)),url('https://picsum.photos/seed/prog1disc/600/400')center/cover}
+.pr-2{background:linear-gradient(150deg,rgba(100,155,200,.4),rgba(74,122,180,.5)),url('https://picsum.photos/seed/prog2glow/600/400')center/cover}
+.pr-3{background:linear-gradient(150deg,rgba(30,58,95,.5),rgba(40,80,140,.5)),url('https://picsum.photos/seed/prog3trans/600/400')center/cover}
 .prog-popular{position:absolute;top:1rem;right:1rem;background:var(--gold);color:var(--deep);font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.75rem;border-radius:2rem}
 .prog-body{padding:2rem}
 .prog-body .prog-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:0.5rem}
@@ -57,16 +58,16 @@
 .g-item:nth-child(4){grid-row:span 2}
 .g-item-bg{width:100%;height:100%;min-height:200px;background-size:cover;background-position:center;transition:transform 0.5s ease}
 .g-item:hover .g-item-bg{transform:scale(1.06)}
-.gb-1{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev1glow/400/600')center/cover;min-height:400px}
-.gb-2{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev2group/400/300')center/cover}
-.gb-3{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev3workshop/400/300')center/cover}
-.gb-4{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev4retreat/400/600')center/cover;min-height:400px}
-.gb-5{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev5yoga/400/300')center/cover}
-.gb-6{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev6food/400/300')center/cover}
-.gb-7{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev7meditate/400/300')center/cover}
-.gb-8{background:linear-gradient(rgba(58,42,37,.1),rgba(58,42,37,.1)),url('https://picsum.photos/seed/ev8circle/400/300')center/cover}
-.g-overlay{position:absolute;inset:0;background:rgba(58,42,37,0);display:flex;align-items:flex-end;padding:1rem;transition:background 0.3s}
-.g-item:hover .g-overlay{background:rgba(58,42,37,0.3)}
+.gb-1{background:linear-gradient(rgba(30,58,95,.1),rgba(30,58,95,.1)),url('https://picsum.photos/seed/ev1glow/400/600')center/cover;min-height:400px}
+.gb-2{background:linear-gradient(rgba(30,58,95,.1),rgba(30,58,95,.1)),url('https://picsum.photos/seed/ev2group/400/300')center/cover}
+.gb-3{background:linear-gradient(rgba(30,58,95,.1),rgba(30,58,95,.1)),url('https://picsum.photos/seed/ev3workshop/400/300')center/cover}
+.gb-4{background:linear-gradient(rgba(30,58,95,.1),rgba(30,58,95,.1)),url('https://picsum.photos/seed/ev4retreat/400/600')center/cover;min-height:400px}
+.gb-5{background:linear-gradient(rgba(30,58,95,.1),rgba(30,58,95,.1)),url('https://picsum.photos/seed/ev5yoga/400/300')center/cover}
+.gb-6{background:linear-gradient(rgba(30,58,95,.1),rgba(30,58,95,.1)),url('https://picsum.photos/seed/ev6food/400/300')center/cover}
+.gb-7{background:linear-gradient(rgba(30,58,95,.1),rgba(30,58,95,.1)),url('https://picsum.photos/seed/ev7meditate/400/300')center/cover}
+.gb-8{background:linear-gradient(rgba(30,58,95,.1),rgba(30,58,95,.1)),url('https://picsum.photos/seed/ev8circle/400/300')center/cover}
+.g-overlay{position:absolute;inset:0;background:rgba(30,58,95,0);display:flex;align-items:flex-end;padding:1rem;transition:background 0.3s}
+.g-item:hover .g-overlay{background:rgba(30,58,95,0.3)}
 .g-label{color:white;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s}
 .g-item:hover .g-label{opacity:1}
 
@@ -83,8 +84,8 @@
 .book-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--cream);margin-bottom:1.25rem;max-width:760px;margin-left:auto;margin-right:auto}
 .book-cta h2 em{font-style:italic;color:var(--blush)}
 .book-cta p{font-size:0.92rem;line-height:1.85;opacity:0.5;color:var(--cream);max-width:480px;margin:0 auto 3rem}
-.cta-blob-1{position:absolute;width:400px;height:400px;background:rgba(196,130,107,0.1);border-radius:50%;filter:blur(80px);top:-100px;left:-100px;pointer-events:none}
-.cta-blob-2{position:absolute;width:300px;height:300px;background:rgba(138,158,140,0.1);border-radius:50%;filter:blur(80px);bottom:-80px;right:-80px;pointer-events:none}
+.cta-blob-1{position:absolute;width:400px;height:400px;background:rgba(74,127,181,0.1);border-radius:50%;filter:blur(80px);top:-100px;left:-100px;pointer-events:none}
+.cta-blob-2{position:absolute;width:300px;height:300px;background:rgba(100,155,200,0.1);border-radius:50%;filter:blur(80px);bottom:-80px;right:-80px;pointer-events:none}
 .cta-content{position:relative;z-index:1}
 .book-note{font-size:0.78rem;opacity:0.35;color:var(--cream);margin-top:1.5rem}
 
@@ -112,7 +113,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Gl<em>ow</em></a>
+  <a href="index.html" class="logo">Har<em>mony</em></a>
   <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -136,7 +137,7 @@
   <div class="blob blob-2"></div>
   <span class="eyebrow reveal">A space to belong</span>
   <h1 class="reveal delay-1">You don't have to do this <em>alone</em></h1>
-  <p class="sub reveal delay-2">The Glow community is a warm, knowledgeable, and deeply supportive space for women committed to living and feeling better — from the inside out.</p>
+  <p class="sub reveal delay-2">The Harmony community is a warm, knowledgeable, and deeply supportive space for women committed to living and feeling better — from the inside out.</p>
   <div class="btn-group reveal delay-3" style="justify-content:center">
     <a href="#book" class="btn-primary">Book a discovery call</a>
     <a href="#programmes" class="btn-outline">View programmes</a>
@@ -165,7 +166,7 @@
   <div class="reveal-left">
     <span class="tag">Why join</span>
     <h2>Everything you need to <em>truly thrive</em></h2>
-    <p>The Glow community isn't just a programme — it's an ongoing relationship with your health, supported by expert guidance, a network of like-minded women, and tools that actually work.</p>
+    <p>The Harmony community isn't just a programme — it's an ongoing relationship with your health, supported by expert guidance, a network of like-minded women, and tools that actually work.</p>
     <ul class="benefit-list">
       <li>
         <span class="b-icon">🎓</span>
@@ -223,7 +224,7 @@
     <div class="prog-card featured-prog reveal delay-2">
       <div class="prog-img pr-2 img-shimmer"><div class="prog-popular">Most popular</div></div>
       <div class="prog-body">
-        <div class="prog-name" style="color:var(--cream)">Glow Programme</div>
+        <div class="prog-name" style="color:var(--cream)">Harmony Programme</div>
         <div class="prog-sub">12 weeks of guided transformation — gut health, collagen, hydration, and mindset working together.</div>
         <ul class="prog-features">
           <li>Full health assessment &amp; protocol</li>
@@ -246,7 +247,7 @@
           <li>Bi-weekly 1-to-1 sessions with Anda</li>
           <li>Full lab review &amp; interpretation</li>
           <li>Bespoke supplement protocol</li>
-          <li>All Glow Programme benefits</li>
+          <li>All Harmony Programme benefits</li>
           <li>Unlimited WhatsApp support</li>
         </ul>
         <div class="prog-price">€597</div>
@@ -262,7 +263,7 @@
   <div class="section-header">
     <span class="tag reveal">Life inside the community</span>
     <h2 class="reveal delay-1">Real moments, <em>real connections</em></h2>
-    <p class="reveal delay-2">From online workshops to in-person retreats, the Glow community gathers to learn, share, and grow together.</p>
+    <p class="reveal delay-2">From online workshops to in-person retreats, the Harmony community gathers to learn, share, and grow together.</p>
   </div>
   <div class="gallery-masonry reveal-scale">
     <div class="g-item"><div class="g-item-bg gb-1"></div><div class="g-overlay"><span class="g-label">Seasonal retreat</span></div></div>
@@ -298,10 +299,10 @@
   <div class="cta-content">
     <span class="tag reveal">Your first step</span>
     <h2 class="reveal delay-1">Book your free <em>discovery call</em></h2>
-    <p class="reveal delay-2">30 minutes. No pressure. Just an honest conversation about where you are, where you want to be, and whether Glow is the right fit for you right now.</p>
+    <p class="reveal delay-2">30 minutes. No pressure. Just an honest conversation about where you are, where you want to be, and whether Harmony is the right fit for you right now.</p>
     <div class="btn-group reveal delay-3" style="justify-content:center">
       <a href="contact.html" class="btn-rose" style="font-size:0.85rem;padding:1.1rem 2.8rem">Book your discovery call</a>
-      <a href="assessment.html" class="btn-outline" style="border-color:rgba(232,196,184,0.3);color:var(--cream)">Take the health assessment first</a>
+      <a href="assessment.html" class="btn-outline" style="border-color:rgba(184,212,240,0.3);color:var(--cream)">Take the health assessment first</a>
     </div>
     <p class="book-note reveal delay-4">Discovery calls are offered free of charge with no obligation to join a programme.</p>
   </div>
@@ -309,8 +310,8 @@
 
 <footer>
   <div>
-    <a href="index.html" class="f-logo">Gl<em>ow</em></a>
-    <p class="f-desc">Holistic living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
+    <a href="index.html" class="f-logo">Har<em>mony</em></a>
+    <p class="f-desc">Harmony living rooted in nature, science, and soul. Nourish your body, mind, and spirit.</p>
   </div>
   <div class="f-col">
     <h4>Explore</h4>
@@ -339,7 +340,7 @@
   </div>
 </footer>
 <div class="f-bottom">
-  <span>© 2026 Glow Holistic Living. All rights reserved.</span>
+  <span>© 2026 Harmony Living. All rights reserved.</span>
   <span>Privacy policy · Terms of use</span>
 </div>
 
