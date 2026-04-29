@@ -194,7 +194,7 @@
       <div class="q-section reveal">
         <h3 class="q-section-title">7. Your Goals</h3>
         <p class="q-section-sub">What are you hoping to achieve? Choose all that resonate.</p>
-        <div class="check-grid">
+        <div class="check-grid" id="goals-checks">
           <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">More energy daily</span></div>
           <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Clearer, glowing skin</span></div>
           <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-text">Better gut health</span></div>
@@ -298,7 +298,7 @@ function updateProgress() {
   const pct = Math.min(Math.round((filled / total) * 90), 90);
   document.getElementById('progress').style.width = pct + '%';
 }
-function submitAssessment(e) {
+async function submitAssessment(e) {
   e.preventDefault();
   const email = document.getElementById('a-email').value.trim();
   if (!email) {
@@ -308,15 +308,50 @@ function submitAssessment(e) {
     setTimeout(() => el.style.borderColor = '', 2000);
     return;
   }
-  document.getElementById('progress').style.width = '100%';
-  const form = document.getElementById('assessment-form');
-  form.style.opacity = '0'; form.style.transition = 'opacity 0.4s';
-  setTimeout(() => {
-    form.style.display = 'none';
-    const s = document.getElementById('success-msg');
-    s.style.display = 'block'; s.style.opacity = '0'; s.style.transition = 'opacity 0.5s';
-    setTimeout(() => s.style.opacity = '1', 50);
-  }, 400);
+
+  const collect = (id) => [...document.querySelectorAll('#' + id + ' .check-item.active')]
+    .map(el => el.querySelector('.check-text').textContent).join(', ') || 'None selected';
+
+  const data = {
+    'First Name':        document.getElementById('a-fname').value.trim() || '—',
+    'Last Name':         document.getElementById('a-lname').value.trim() || '—',
+    'Email':             email,
+    'Energy Level':      answers.energy ? answers.energy + ' / 5' : 'Not answered',
+    'Digestive Health':  collect('digestion-checks'),
+    'Skin & Hair':       collect('skin-checks'),
+    'Sleep Quality':     answers.sleep    || 'Not answered',
+    'Stress Level':      answers.stress   ? answers.stress + ' / 5' : 'Not answered',
+    'Hydration':         answers.hydration || 'Not answered',
+    'Goals':             collect('goals-checks'),
+    'Additional Notes':  document.getElementById('a-notes').value.trim() || '—',
+  };
+
+  const btn = e.target;
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/xqewrnkj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error();
+
+    document.getElementById('progress').style.width = '100%';
+    const form = document.getElementById('assessment-form');
+    form.style.opacity = '0'; form.style.transition = 'opacity 0.4s';
+    setTimeout(() => {
+      form.style.display = 'none';
+      const s = document.getElementById('success-msg');
+      s.style.display = 'block'; s.style.opacity = '0'; s.style.transition = 'opacity 0.5s';
+      setTimeout(() => s.style.opacity = '1', 50);
+    }, 400);
+  } catch {
+    btn.textContent = 'Submit my assessment';
+    btn.disabled = false;
+    alert('Something went wrong — please try again or contact us directly.');
+  }
 }
 </script>
 </body>
