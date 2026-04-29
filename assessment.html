@@ -274,56 +274,130 @@
 <script src="glow.js"></script>
 <script>
 const answers = {};
+
 function selectScale(key, val, btn) {
-  const group = btn.parentElement;
-  group.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('active'));
+  btn.parentElement.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   answers[key] = val;
+  clearSectionError(btn.closest('.q-section'));
   updateProgress();
 }
 function selectRadio(key, item) {
-  const list = item.parentElement;
-  list.querySelectorAll('.radio-item').forEach(i => i.classList.remove('active'));
+  item.parentElement.querySelectorAll('.radio-item').forEach(i => i.classList.remove('active'));
   item.classList.add('active');
   answers[key] = item.querySelector('.radio-text').textContent;
+  clearSectionError(item.closest('.q-section'));
   updateProgress();
 }
 function toggleCheck(item) {
   item.classList.toggle('active');
+  clearSectionError(item.closest('.q-section'));
   updateProgress();
 }
 function updateProgress() {
   const total = 7;
   const filled = Object.keys(answers).length + (document.querySelectorAll('.check-item.active').length > 0 ? 1 : 0);
-  const pct = Math.min(Math.round((filled / total) * 90), 90);
-  document.getElementById('progress').style.width = pct + '%';
+  document.getElementById('progress').style.width = Math.min(Math.round((filled / total) * 90), 90) + '%';
 }
+
+function findSection(keyword) {
+  return [...document.querySelectorAll('.q-section-title')]
+    .find(el => el.textContent.includes(keyword))?.closest('.q-section');
+}
+function showFieldError(el, msg) {
+  el.style.borderColor = 'var(--rose)';
+  el.style.boxShadow = '0 0 0 3px rgba(196,130,107,0.15)';
+  let err = el.parentNode.querySelector('.field-error');
+  if (!err) {
+    err = document.createElement('span');
+    err.className = 'field-error';
+    err.style.cssText = 'font-size:0.74rem;color:var(--rose);margin-top:0.35rem;display:block';
+    el.parentNode.appendChild(err);
+  }
+  err.textContent = msg;
+}
+function showSectionError(section, msg) {
+  let err = section.querySelector('.field-error');
+  if (!err) {
+    err = document.createElement('span');
+    err.className = 'field-error';
+    err.style.cssText = 'font-size:0.74rem;color:var(--rose);margin-top:0.35rem;display:block';
+    section.querySelector('.q-section-sub').after(err);
+  }
+  err.textContent = msg;
+}
+function clearSectionError(section) {
+  section?.querySelector('.field-error')?.remove();
+}
+function clearFieldError(el) {
+  el.style.borderColor = '';
+  el.style.boxShadow = '';
+  el.parentNode.querySelector('.field-error')?.remove();
+}
+
 async function submitAssessment(e) {
   e.preventDefault();
-  const email = document.getElementById('a-email').value.trim();
-  if (!email) {
-    const el = document.getElementById('a-email');
-    el.style.borderColor = 'var(--rose)';
-    el.focus();
-    setTimeout(() => el.style.borderColor = '', 2000);
+
+  // Clear all previous errors
+  document.querySelectorAll('.field-error').forEach(el => el.remove());
+  ['a-fname','a-lname','a-email'].forEach(id => {
+    const el = document.getElementById(id);
+    el.style.borderColor = ''; el.style.boxShadow = '';
+  });
+
+  let firstError = null;
+  function flag(el) { if (!firstError) firstError = el; }
+
+  // Name fields
+  const fnameEl = document.getElementById('a-fname');
+  const lnameEl = document.getElementById('a-lname');
+  if (!fnameEl.value.trim()) { showFieldError(fnameEl, 'Please enter your first name.'); flag(fnameEl); }
+  if (!lnameEl.value.trim()) { showFieldError(lnameEl, 'Please enter your last name.'); flag(lnameEl); }
+
+  // Quiz sections
+  const checks = [
+    { section: findSection('Energy'),     ok: !!answers.energy,                                          msg: 'Please select your energy level.' },
+    { section: findSection('Digestive'),  ok: !!document.querySelector('#digestion-checks .check-item.active'), msg: 'Please select at least one option.' },
+    { section: findSection('Skin'),       ok: !!document.querySelector('#skin-checks .check-item.active'),     msg: 'Please select at least one option.' },
+    { section: findSection('Sleep'),      ok: !!answers.sleep,                                           msg: 'Please select your sleep quality.' },
+    { section: findSection('Stress'),     ok: !!answers.stress,                                          msg: 'Please select your stress level.' },
+    { section: findSection('Hydration'),  ok: !!answers.hydration,                                       msg: 'Please select your hydration level.' },
+    { section: findSection('Goals'),      ok: !!document.querySelector('#goals-checks .check-item.active'),    msg: 'Please select at least one goal.' },
+  ];
+  checks.forEach(({ section, ok, msg }) => {
+    if (!ok && section) { showSectionError(section, msg); flag(section); }
+  });
+
+  // Email
+  const emailEl = document.getElementById('a-email');
+  const email = emailEl.value.trim();
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  if (!validEmail) {
+    showFieldError(emailEl, email.length === 0 ? 'Please enter your email address.' : 'Please enter a valid email (e.g. name@example.com).');
+    flag(emailEl);
+  }
+
+  if (firstError) {
+    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
+  // All valid — collect & send
   const collect = (id) => [...document.querySelectorAll('#' + id + ' .check-item.active')]
-    .map(el => el.querySelector('.check-text').textContent).join(', ') || 'None selected';
+    .map(el => el.querySelector('.check-text').textContent).join(', ');
 
   const data = {
-    'First Name':        document.getElementById('a-fname').value.trim() || '—',
-    'Last Name':         document.getElementById('a-lname').value.trim() || '—',
-    'Email':             email,
-    'Energy Level':      answers.energy ? answers.energy + ' / 5' : 'Not answered',
-    'Digestive Health':  collect('digestion-checks'),
-    'Skin & Hair':       collect('skin-checks'),
-    'Sleep Quality':     answers.sleep    || 'Not answered',
-    'Stress Level':      answers.stress   ? answers.stress + ' / 5' : 'Not answered',
-    'Hydration':         answers.hydration || 'Not answered',
-    'Goals':             collect('goals-checks'),
-    'Additional Notes':  document.getElementById('a-notes').value.trim() || '—',
+    'First Name':       fnameEl.value.trim(),
+    'Last Name':        lnameEl.value.trim(),
+    'Email':            email,
+    'Energy Level':     answers.energy + ' / 5',
+    'Digestive Health': collect('digestion-checks'),
+    'Skin & Hair':      collect('skin-checks'),
+    'Sleep Quality':    answers.sleep,
+    'Stress Level':     answers.stress + ' / 5',
+    'Hydration':        answers.hydration,
+    'Goals':            collect('goals-checks'),
+    'Additional Notes': document.getElementById('a-notes').value.trim() || '—',
   };
 
   const btn = e.target;
